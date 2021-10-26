@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ExpenseManagementApplication</string>
+    <string name="OR">OR</string>
+    <string name="enterEmailOrPhoneNo">Enter Email or PhoneNo</string>
+    <string name="enterPassword">Enter Password</string>
+    <string name="logIn">Log In</string>
+    <string name="signUp">Sign Up</string>
+    <string name="notAUser">Not A User ?</string>
+</resources>
