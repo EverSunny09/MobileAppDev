@@ -6,15 +6,28 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+
 public class DataBaseExecution extends SQLiteOpenHelper {
 
+    private static final String dbName = "expenseManagementDB";
 
-    public DataBaseExecution(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private SQLiteDatabase ExpenseManagementDB ;
+
+    public DataBaseExecution(@Nullable Context context) {
+        super(context, dbName, null, 1);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+       /* String createUserTable = "";
+        String createUserTable = "";
+        String createUserTable = "";
+        String createUserTable = "";
+        String createUserTable = "";
+
+        db.execSQL(createUserTable);*/
 
     }
 
@@ -22,4 +35,5 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }

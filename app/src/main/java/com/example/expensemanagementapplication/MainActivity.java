@@ -11,12 +11,14 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText emailOrNo;
     private EditText password;
+    DataBaseExecution dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dataBase = new DataBaseExecution(this);
     }
 
     public void logInButtonClick(View view){
