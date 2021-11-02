@@ -11,6 +11,15 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
     private static final String dbName = "expenseManagementDB";
 
+    private static final String User_Table = "User";
+    private static final String Column_UserId = "UserId";
+    private static final String Column_FirstName = "FirstName";
+    private static final String Column_LastName = "LastName";
+    private static final String Column_Password = "Password";
+    private static final String Column_Email = "Email";
+    private static final String Column_BaseCurrency = "BaseCurrency";
+    private static final String Column_EmployeeId = "EmployeeId";
+
     private SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(@Nullable Context context) {
@@ -21,13 +30,10 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-       /* String createUserTable = "";
-        String createUserTable = "";
-        String createUserTable = "";
-        String createUserTable = "";
-        String createUserTable = "";
+        String createUserTable = "CREATE TABLE " + User_Table + " ( " + Column_UserId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_FirstName + " TEXT, " + Column_LastName + " TEXT, " + Column_Password + " TEXT, " + Column_Email+ " TEXT, " + Column_BaseCurrency + " INTEGER, " + Column_EmployeeId + " TEXT )";
+                                 // CREATE TABLE USER_TABLE ( UserId int PRIMARY KEY AUTOINCREMENT, FirstName Text, LastName TEXT, Password TEXT, Email TEXT, BaseCurrency int, employeeId text )
 
-        db.execSQL(createUserTable);*/
+        db.execSQL(createUserTable);
 
     }
 
