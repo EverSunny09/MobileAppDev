@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 public class SignUp1 extends AppCompatActivity {
 
@@ -34,8 +38,9 @@ public class SignUp1 extends AppCompatActivity {
         String conPwd = confirmPassword.getText().toString();
 
         if(emailPhone!=null && pwd!=null && conPwd!=null){
-
-            if(pwd==conPwd){
+            boolean validEmail = validateEmail();
+            boolean validPassword =validatePassword(pwd,conPwd);
+            if(validEmail && validPassword){
 
                 // encrypt pwd
                 //add user in db
@@ -46,6 +51,34 @@ public class SignUp1 extends AppCompatActivity {
             }
         }
 
+    }
+
+    private  boolean validatePassword(String pwd,String conPwd){
+        if(pwd.equals(conPwd))
+            return true;
+        else{
+            Toast alertText = Toast.makeText(getApplicationContext(), "Please check your password", Toast.LENGTH_SHORT);
+            alertText.show();
+            return false;
+        }
+
+    }
+
+    private boolean validateEmail(){
+        String emailInput = emailOrPhone.getText().toString().trim();
+        if(emailInput.isEmpty()){
+            Toast alertText = Toast.makeText(getApplicationContext(), "Please enter valid Email Address", Toast.LENGTH_SHORT);
+            alertText.show();
+            return false;
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            Toast alertText = Toast.makeText(getApplicationContext(), "Please enter valid Email Address", Toast.LENGTH_SHORT);
+            alertText.show();
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
 }
