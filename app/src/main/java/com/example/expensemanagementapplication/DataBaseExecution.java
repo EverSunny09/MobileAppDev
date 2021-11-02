@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class DataBaseExecution extends SQLiteOpenHelper {
 
-    private static final String dbName = "expenseManagementDB";
+    private static String dbName = "ExpenseManagementDB";
 
     private static final String User_Table = "User";
     private static final String Column_UserId = "UserId";
@@ -22,8 +22,9 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
     private SQLiteDatabase ExpenseManagementDB ;
 
-    public DataBaseExecution(@Nullable Context context) {
+    public DataBaseExecution(Context context) {
         super(context, dbName, null, 1);
+        ExpenseManagementDB= getWritableDatabase();
 
     }
 
