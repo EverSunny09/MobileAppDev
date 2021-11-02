@@ -66,6 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastName"
         app:layout_constraintVertical_bias="0.126"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
