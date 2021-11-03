@@ -8,14 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class SignUp extends AppCompatActivity {
 
-    private EditText firstName;
-    private EditText lastName;
-    private EditText employeeId;
-
-
-
+    private EditText firstName,lastName,employeeId;
+    private DataBaseExecution db;
+    String fName,lName,empId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,26 +23,43 @@ public class SignUp extends AppCompatActivity {
         firstName= (EditText)findViewById(R.id.firstName);
         lastName= (EditText)findViewById(R.id.lastName);
         employeeId= (EditText) findViewById(R.id.employeeId);
-
+        db=new DataBaseExecution(this);
     }
 
     public void nextButtonClick(View view){
 
-        String fName = firstName.getText().toString();
-        String lName = lastName.getText().toString();
-        String empId = employeeId.getText().toString();
+        fName = firstName.getText().toString().trim();
+        lName = lastName.getText().toString().trim();
+        empId = employeeId.getText().toString().trim();
 
-        if(!fName.isEmpty() && !lName.isEmpty() && !empId.isEmpty()){
-            Intent signUp1 = new Intent(this,SignUp1.class);
-            signUp1.putExtra(SignUp1.firstName,fName);
-            signUp1.putExtra(SignUp1.lastName,lName);
-            signUp1.putExtra(SignUp1.employeeId,empId);
-            startActivity(signUp1);
+        if(fName.length()>0 && lName.length()>0 && empId.length()>0){
+            boolean userExists = checkExistingUser(empId);
+            if(userExists){
+               raiseToast("Entered User already Exists");
+            }
+            else{
+                moveToSignUp1();
+            }
         }
-
         else{
-            Toast alertText = Toast.makeText(getApplicationContext(), "Enter details", Toast.LENGTH_SHORT);
-            alertText.show();
+            raiseToast("Enter details");
         }
+    }
+
+    private void moveToSignUp1(){
+        Intent signUp1 = new Intent(this,SignUp1.class);
+        signUp1.putExtra(SignUp1.firstName,fName);
+        signUp1.putExtra(SignUp1.lastName,lName);
+        signUp1.putExtra(SignUp1.employeeId,empId);
+        startActivity(signUp1);
+    }
+
+    private boolean checkExistingUser(String employeeId){
+        return db.checkExistingUser(employeeId.toLowerCase());
+    }
+
+    private void raiseToast(String toastMsg){
+        Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
+        alertText.show();
     }
 }

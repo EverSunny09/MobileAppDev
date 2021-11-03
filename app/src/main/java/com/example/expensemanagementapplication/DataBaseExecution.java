@@ -1,6 +1,7 @@
 package com.example.expensemanagementapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -9,7 +10,7 @@ import androidx.annotation.Nullable;
 
 public class DataBaseExecution extends SQLiteOpenHelper {
 
-    private static String dbName = "ExpenseManagementDB";
+    private static String dbName = "ExpenseManagement.db";
 
     private static final String User_Table = "User";
     private static final String Column_UserId = "UserId";
@@ -20,7 +21,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     private static final String Column_BaseCurrency = "BaseCurrency";
     private static final String Column_EmployeeId = "EmployeeId";
 
-    private SQLiteDatabase ExpenseManagementDB ;
+    public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
         super(context, dbName, null, 1);
@@ -41,6 +42,11 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public Boolean checkExistingUser(String employeeId){
+        Cursor results = ExpenseManagementDB.rawQuery("Select * from User where LOWER(EmployeeId) = ?",new String[]{employeeId});
+        return  results.getCount()>0;
     }
 
 }
