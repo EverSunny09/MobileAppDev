@@ -1,9 +1,12 @@
 package com.example.expensemanagementapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Patterns;
@@ -43,6 +46,7 @@ public class SignUp1 extends AppCompatActivity {
         empId = i.getStringExtra(employeeId);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void signInButtonClick(View view){
         emailPhone = emailOrPhone.getText().toString().trim();
         pwd = password.getText().toString().trim();
@@ -67,11 +71,13 @@ public class SignUp1 extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void saveIntoDB(UserModel User){
         DataBaseExecution db = new DataBaseExecution(this);
         boolean output = db.addNewUser(User);
         if(output){
             raiseToast("User added successfully. Please Login");
+            moveToHomePage();
         }
 
         else{
@@ -126,10 +132,12 @@ public class SignUp1 extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void moveToHomePage(){
         Intent homeScreen = new Intent(this, HomeScreen.class);
         homeScreen.putExtra(HomeScreen.user,firstName);
-        startActivity(homeScreen);
+        Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+        startActivity(homeScreen,b);
     }
 
     private void raiseToast(String toastMsg){
@@ -164,4 +172,5 @@ public class SignUp1 extends AppCompatActivity {
         SecretKeySpec secretKeySpec = new SecretKeySpec(key,"AES");
         return secretKeySpec;
     }
+
 }
