@@ -24,7 +24,7 @@ public class SignUp1 extends AppCompatActivity {
     public static final String firstName ="f";
     public static final String lastName ="l";
     public static final String employeeId = "e";
-    String emailPhone,pwd,conPwd,test;
+    String emailPhone,pwd,conPwd,encryptedPass,decryptedPass;
     private EditText emailOrPhone,password,confirmPassword;
     private Button signInButton;
     String AES="AES";
@@ -50,10 +50,11 @@ public class SignUp1 extends AppCompatActivity {
             boolean validPassword = validatePassword(pwd,conPwd);
             if(validEmail && validPassword){
                 try{
-                    signInButton.setText(encrypt(employeeId,pwd));
+
+                    encryptedPass = encrypt(pwd,emailPhone);
                 }
                 catch (Exception e){
-
+                    raiseToast("Something went wrong! Please try again.");
                 }
 
                 // encrypt pwd
@@ -62,6 +63,16 @@ public class SignUp1 extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void decrypClick(View view){
+        try{
+            emailPhone = emailOrPhone.getText().toString().trim();
+            decryptedPass = decrypt(encryptedPass,emailPhone);
+        }
+        catch (Exception e){
+
+        }
     }
 
     private  boolean validatePassword(String pwd,String conPwd){
@@ -95,11 +106,21 @@ public class SignUp1 extends AppCompatActivity {
         alertText.show();
     }
 
-    private String encrypt(String employeeId,String password) throws Exception{
-        SecretKeySpec key =generateSecretKey(password);
+    private String decrypt(String password, String employeeId) throws Exception{
+        SecretKeySpec key =generateSecretKey(employeeId);
+        Cipher c= Cipher.getInstance(AES);
+        c.init(Cipher.DECRYPT_MODE,key);
+        byte[] decodedValue = Base64.decode(password,Base64.DEFAULT);
+        byte[] decValue = c.doFinal(decodedValue);
+        String decrypredValue = new String(decValue);
+        return decrypredValue;
+    }
+
+    private String encrypt(String password,String employeeId) throws Exception{
+        SecretKeySpec key =generateSecretKey(employeeId);
         Cipher c= Cipher.getInstance(AES);
         c.init(Cipher.ENCRYPT_MODE,key);
-        byte[] encValue = c.doFinal(employeeId.getBytes());
+        byte[] encValue = c.doFinal(password.getBytes());
         String encryptedValue = Base64.encodeToString(encValue,Base64.DEFAULT);
         return encryptedValue;
     }
