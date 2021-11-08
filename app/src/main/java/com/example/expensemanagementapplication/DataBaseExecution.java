@@ -1,5 +1,6 @@
 package com.example.expensemanagementapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -47,6 +48,27 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public Boolean checkExistingUser(String employeeId){
         Cursor results = ExpenseManagementDB.rawQuery("Select * from User where LOWER(EmployeeId) = ?",new String[]{employeeId});
         return  results.getCount()>0;
+    }
+
+    public Boolean checkExistingUserEmail(String emailId){
+        Cursor results = ExpenseManagementDB.rawQuery("Select * from User where LOWER(Email) = ?",new String[]{emailId});
+        return  results.getCount()>0;
+    }
+
+    public boolean addNewUser(UserModel User){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Column_FirstName,User.getFirstName());
+        cv.put(Column_LastName,User.getLastName());
+        cv.put(Column_Password,User.getPassword());
+        cv.put(Column_Email,User.getEmail());
+        cv.put(Column_BaseCurrency,User.getBaseCurrency());
+        cv.put(Column_EmployeeId,User.getEmployeeId());
+        long insert = db.insert(User_Table,null,cv);
+        if(insert == -1)
+            return false;
+        else
+            return true;
     }
 
 }

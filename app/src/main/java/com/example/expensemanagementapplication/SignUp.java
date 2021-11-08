@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void moveToSignUp1(){
-        Intent signUp1 = new Intent(this,SignUp1.class);
+        Intent signUp1 = new Intent(SignUp.this,SignUp1.class);
         signUp1.putExtra(SignUp1.firstName,fName);
         signUp1.putExtra(SignUp1.lastName,lName);
         signUp1.putExtra(SignUp1.employeeId,empId);

@@ -24,9 +24,8 @@ public class SignUp1 extends AppCompatActivity {
     public static final String firstName ="f";
     public static final String lastName ="l";
     public static final String employeeId = "e";
-    String emailPhone,pwd,conPwd,encryptedPass,decryptedPass;
+    String emailPhone,pwd,conPwd,encryptedPass,decryptedPass,fName,lName,empId;
     private EditText emailOrPhone,password,confirmPassword;
-    private Button signInButton;
     String AES="AES";
 
     @Override
@@ -37,7 +36,11 @@ public class SignUp1 extends AppCompatActivity {
         emailOrPhone = (EditText)findViewById(R.id.emailOrPhone);
         password = (EditText)findViewById(R.id.passwordSignUp);
         confirmPassword = (EditText)findViewById(R.id.confirmPwdSignUp);
-        signInButton= (Button)findViewById(R.id.signIn);
+
+        Intent i = getIntent();
+        fName = i.getStringExtra(firstName);
+        lName = i.getStringExtra(lastName);
+        empId = i.getStringExtra(employeeId);
     }
 
     public void signInButtonClick(View view){
@@ -52,20 +55,37 @@ public class SignUp1 extends AppCompatActivity {
                 try{
 
                     encryptedPass = encrypt(pwd,emailPhone);
+                    UserModel User = new UserModel(-1,fName,lName,encryptedPass,emailPhone,1,empId);
+                    saveIntoDB(User);
                 }
                 catch (Exception e){
                     raiseToast("Something went wrong! Please try again.");
                 }
-
-                // encrypt pwd
-                //add user in db
 
             }
         }
 
     }
 
-    public void decrypClick(View view){
+    public void saveIntoDB(UserModel User){
+        DataBaseExecution db = new DataBaseExecution(this);
+        boolean output = db.addNewUser(User);
+        if(output){
+            raiseToast("User added successfully. Please Login");
+        }
+
+        else{
+            raiseToast("Something went wrong! Please try again.");
+        }
+    }
+
+    private void moveToLoginPage(){
+        Intent logIn = new Intent(this, LogIn.class);
+        startActivity(logIn);
+    }
+
+
+    public void decryptClick(View view){
         try{
             emailPhone = emailOrPhone.getText().toString().trim();
             decryptedPass = decrypt(encryptedPass,emailPhone);
@@ -90,6 +110,17 @@ public class SignUp1 extends AppCompatActivity {
             raiseToast("Please enter valid Email Address");
             return false;
         }
+        else {
+            return checkExistingEmail(emailInput);
+        }
+    }
+
+    private boolean checkExistingEmail(String email){
+        DataBaseExecution db = new DataBaseExecution(this);
+        if(db.checkExistingUserEmail(email)){
+            raiseToast("Email address already exists.");
+            return false; //returning false since we are checking valid email
+        }
         else{
             return true;
         }
@@ -112,8 +143,8 @@ public class SignUp1 extends AppCompatActivity {
         c.init(Cipher.DECRYPT_MODE,key);
         byte[] decodedValue = Base64.decode(password,Base64.DEFAULT);
         byte[] decValue = c.doFinal(decodedValue);
-        String decrypredValue = new String(decValue);
-        return decrypredValue;
+        String decryptedValue = new String(decValue);
+        return decryptedValue;
     }
 
     private String encrypt(String password,String employeeId) throws Exception{
