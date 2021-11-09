@@ -18,4 +18,5 @@
         <item name="android:windowEnterTransition">@transition/transition_animation</item>
         <item name="android:windowExitTransition">@transition/transition_animation</item>
     </style>
+
 </resources>

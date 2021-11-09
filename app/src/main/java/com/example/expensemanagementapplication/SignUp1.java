@@ -111,7 +111,7 @@ public class SignUp1 extends AppCompatActivity {
 
     }
 
-    private boolean validateEmail(String emailInput){
+    public boolean validateEmail(String emailInput){
         if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
             raiseToast("Please enter valid Email Address");
             return false;

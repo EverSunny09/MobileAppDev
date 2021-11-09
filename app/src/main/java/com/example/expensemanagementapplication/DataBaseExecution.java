@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Locale;
+
 
 public class DataBaseExecution extends SQLiteOpenHelper {
 
@@ -69,6 +71,12 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return false;
         else
             return true;
+    }
+
+    public String getPwdFromDB (String userEmail){
+        Cursor results = ExpenseManagementDB.rawQuery("Select Password from User where LOWER(Email) = ?",new String[]{userEmail});
+        results.moveToFirst();
+        return results.getString(0);
     }
 
 }
