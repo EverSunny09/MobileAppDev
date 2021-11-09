@@ -35,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkLoggedInUser();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void checkLoggedInUser(){
+        SessionManagement sessionManagement=new SessionManagement(MainActivity.this);
+        int userId = sessionManagement.getSession();
+        if(userId!=-1){
+            moveToHomeScreen("test");
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void logInButtonClick(View view){
 
         emailOrNo = (EditText)findViewById(R.id.userName);
@@ -52,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                     boolean validPwd = checkPwd(encryptedPass,dbPwd);
 
                     if(validPwd){
+                        saveSession();
                         moveToHomeScreen(email);
+                    }
+                    else{
+                        raiseToast("Incorrect Password !");
                     }
                 } catch (Exception e) {
                     raiseToast("Please Enter Valid Credentials!");
@@ -66,7 +86,18 @@ public class MainActivity extends AppCompatActivity {
         Intent logIn = new Intent(this, HomeScreen.class);
         logIn.putExtra(LogIn.userName,email);
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+        logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(logIn,b);
+    }
+
+    private void saveSession(){
+        SessionManagement sessionManagement= new SessionManagement(MainActivity.this);
+        sessionManagement.saveSession(getUser());
+    }
+
+    private UserSession getUser(){
+        UserSession user = new UserSession(12,"Sunny");
+        return user;
     }
 
     private boolean checkPwd(String encryptedPass, String dbPwd) {
