@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailOrNo;
     private EditText password;
     String AES="AES"; //common
-
+    UserSession user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         SessionManagement sessionManagement=new SessionManagement(MainActivity.this);
         int userId = sessionManagement.getSession();
         if(userId!=-1){
-            moveToHomeScreen("test");
+            moveToHomeScreen(String.valueOf(userId),false);
         }
     }
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if(validPwd){
                         saveSession();
-                        moveToHomeScreen(email);
+                        moveToHomeScreen(email,true);
                     }
                     else{
                         raiseToast("Incorrect Password !");
@@ -82,12 +83,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void moveToHomeScreen(String email) {
+    private void moveToHomeScreen(String email,Boolean showAnimation) {
         Intent logIn = new Intent(this, HomeScreen.class);
-        logIn.putExtra(LogIn.userName,email);
+        logIn.putExtra(HomeScreen.user,email);
+        logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
-        logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(logIn,b);
+        if(showAnimation)
+            startActivity(logIn,b);
+        else
+            startActivity(logIn);
     }
 
     private void saveSession(){
@@ -95,8 +99,11 @@ public class MainActivity extends AppCompatActivity {
         sessionManagement.saveSession(getUser());
     }
 
+    private void setUser(String Name, int userId){
+        user = new UserSession(userId,Name);
+    }
+
     private UserSession getUser(){
-        UserSession user = new UserSession(12,"Sunny");
         return user;
     }
 
@@ -155,7 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
     private String getPwdFromDb(String email){ //common
         DataBaseExecution db = new DataBaseExecution(this);
-        return db.getPwdFromDB(email);
+        Cursor results = db.getData("*","User","Email",email);
+        results.moveToFirst();
+        setUser(results.getString(1)+" "+results.getString(2),results.getInt(0));
+        return results.getString(3);
+    }
+
+    private UserSession getSessionDetails(Cursor results){
+        results.moveToNext();
+        UserSession user = new UserSession(results.getInt(0),results.getString(1)+ " "+results.getString(2));
+        return user;
     }
 
 }

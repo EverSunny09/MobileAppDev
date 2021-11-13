@@ -21,4 +21,8 @@ public class SessionManagement {
     public int getSession(){
         return sharedPreferences.getInt(SESSION_KEY,-1);
     }
+
+    public void removeSession(){
+        editor.putInt(SESSION_KEY,-1).commit();
+    }
 }

@@ -85,11 +85,6 @@ public class SignUp1 extends AppCompatActivity {
         }
     }
 
-    private void moveToLoginPage(){
-        Intent logIn = new Intent(this, LogIn.class);
-        startActivity(logIn);
-    }
-
 
     public void decryptClick(View view){
         try{
@@ -137,6 +132,7 @@ public class SignUp1 extends AppCompatActivity {
         Intent homeScreen = new Intent(this, HomeScreen.class);
         homeScreen.putExtra(HomeScreen.user,firstName);
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+        homeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(homeScreen,b);
     }
 

@@ -79,8 +79,8 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         return results.getString(0);
     }
 
-    public Cursor getLoggedInUser(String userEmail){
-        Cursor results = ExpenseManagementDB.rawQuery("Select * from User where LOWER(Email) = ?",new String[]{userEmail});
+    public Cursor getData(String columnNames,String tableName,String colWhere,String colWhereValue){
+        Cursor results = ExpenseManagementDB.rawQuery("Select "+columnNames+" from "+tableName+" where "+colWhere+" = ?",new String[]{colWhereValue});
         return results;
     }
 
