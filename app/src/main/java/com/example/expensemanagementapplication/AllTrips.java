@@ -1,9 +1,11 @@
 package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.CalendarView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -15,19 +17,29 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AllTrips extends AppCompatActivity {
 
     private PieChart pieChart;
+    RecyclerView rview;
+    ArrayList<TripCardModel> cardModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_trips);
         pieChart = findViewById(R.id.pieChart);
+
         setUpPieChart();
         loadPieChartData();
+
+        //rview = findViewById(R.id.)
+
     }
+
+
 
     private void setUpPieChart(){
         pieChart.setDrawHoleEnabled(true);
