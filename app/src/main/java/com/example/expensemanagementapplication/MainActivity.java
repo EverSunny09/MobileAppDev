@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.security.MessageDigest;
-import java.util.Locale;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void moveToHomeScreen(String email,Boolean showAnimation) {
-        Intent logIn = new Intent(this, HomeScreen.class);
+        Intent logIn = new Intent(this, AllTrips.class);
         logIn.putExtra(HomeScreen.user,email);
         logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();

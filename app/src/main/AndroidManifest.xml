@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagementApplication">
-        <activity android:name=".HomeScreen"></activity>
+        <activity
+            android:name=".AllTrips"
+            android:exported="false" />
+        <activity android:name=".HomeScreen" />
         <activity android:name=".SignUp1" />
         <activity android:name=".SignUp" />
         <activity android:name=".LogIn" />
