@@ -12,10 +12,14 @@ import java.util.Locale;
 
 
 public class DataBaseExecution extends SQLiteOpenHelper {
-
+    //DBName
     private static String dbName = "ExpenseManagement.db";
 
+    //TableNames
     private static final String User_Table = "User";
+    private static final String Trip_Table="Trip";
+
+    //Columns
     private static final String Column_UserId = "UserId";
     private static final String Column_FirstName = "FirstName";
     private static final String Column_LastName = "LastName";
@@ -24,10 +28,24 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     private static final String Column_BaseCurrency = "BaseCurrency";
     private static final String Column_EmployeeId = "EmployeeId";
 
+    private static final String Column_TripId="TripId";
+    private static final String Column_TripName="TripName";
+    private static final String Column_Destination ="Destination";
+    private static final String Column_TripStartDate ="TripStartDate";
+    private static final String Column_TripEndDate ="TripEndDate";
+    private static final String Column_RequireRiskAssess ="RequireRiskAssessment";
+    private static final String Column_Desc ="Description";
+    private static final String Column_IsActive ="IsActive";
+    private static final String Column_TypeOfTrip="TypeOfTrip";
+    private static final String Column_OtherType="OtherType";
+    private static final String Column_TotalCompensated="TotalCompensated";
+    private static final String Column_IsInternationalTrip="IsInternationalTrip";
+    private static final String Column_TotalExpense="TotalExpense";
+
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 1);
+        super(context, dbName, null, 2);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -38,13 +56,19 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         String createUserTable = "CREATE TABLE " + User_Table + " ( " + Column_UserId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_FirstName + " TEXT, " + Column_LastName + " TEXT, " + Column_Password + " TEXT, " + Column_Email+ " TEXT, " + Column_BaseCurrency + " INTEGER, " + Column_EmployeeId + " TEXT )";
                                  // CREATE TABLE USER_TABLE ( UserId int PRIMARY KEY AUTOINCREMENT, FirstName Text, LastName TEXT, Password TEXT, Email TEXT, BaseCurrency int, employeeId text )
 
+        String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " INTEGER, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " NUMERIC, " + Column_TotalExpense + " NUMERIC, " + Column_IsInternationalTrip + " INTEGER );";
+
+
         db.execSQL(createUserTable);
+        db.execSQL(createTripTable);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS "+User_Table);
+        db.execSQL("DROP TABLE IF EXISTS "+Trip_Table);
+        onCreate(db);
     }
 
     public Boolean checkExistingUser(String employeeId){
