@@ -1,6 +1,7 @@
 package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
@@ -22,23 +23,37 @@ import java.util.Calendar;
 public class AllTrips extends AppCompatActivity {
 
     private PieChart pieChart;
-    RecyclerView rview;
     ArrayList<TripCardModel> cardModel;
+    RecyclerView recycler1;
+    PieData pieData1, pieData2, pieData3;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_trips);
-        pieChart = findViewById(R.id.pieChart);
 
-        setUpPieChart();
-        loadPieChartData();
+        //pieChart = findViewById(R.id.pieChart);
+        recycler1 = findViewById(R.id.recycler1);
+        cardModel = new ArrayList<>();
 
-        //rview = findViewById(R.id.)
+        cardModel.add(new TripCardModel(pieData1 = loadPieChartData()));
+        cardModel.add(new TripCardModel(pieData2 = loadPieChartData()));
+        cardModel.add(new TripCardModel(pieData3 = loadPieChartData()));
+
+        LinearLayoutManager manager1 = new LinearLayoutManager(this);
+        manager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recycler1.setLayoutManager(manager1);
+
+        RecyclerViewAdapter adaptor1 = new RecyclerViewAdapter(this,cardModel);
+        recycler1.setAdapter(adaptor1);
+
+        //setUpPieChart();
+        //loadPieChartData();
+
+        //review = findViewById(R.id.)
 
     }
-
 
 
     private void setUpPieChart(){
@@ -58,7 +73,7 @@ public class AllTrips extends AppCompatActivity {
         l.setEnabled(true);
     }
 
-    private void loadPieChartData(){
+    private PieData loadPieChartData(){
 
         ArrayList<PieEntry> pieChartEntries = new ArrayList<>();
         pieChartEntries.add(new PieEntry(0.2f,"Food"));
@@ -82,9 +97,10 @@ public class AllTrips extends AppCompatActivity {
         pieData.setValueTextSize(12f);
         pieData.setValueTextColor(Color.BLACK);
 
-        pieChart.setData(pieData);
+        /*pieChart.setData(pieData);
         pieChart.invalidate();
 
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);*/
+        return pieData;
     }
 }
