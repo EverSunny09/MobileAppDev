@@ -7,15 +7,15 @@ import com.github.mikephil.charting.data.PieData;
 
 public class TripCardModel {
     PieData piechart;
-    ProgressBar progress1;
+    /*ProgressBar progress1;
     ProgressBar progress2;
-    ProgressBar progress3;
+    ProgressBar progress3;*/
 
-    public TripCardModel(PieData piechart, ProgressBar progress1, ProgressBar progress2, ProgressBar progress3) {
+    public TripCardModel(PieData piechart/*, ProgressBar progress1, ProgressBar progress2, ProgressBar progress3*/) {
         this.piechart = piechart;
-        this.progress1 = progress1;
+        /*this.progress1 = progress1;
         this.progress2 = progress2;
-        this.progress3 = progress3;
+        this.progress3 = progress3;*/
     }
 
     public PieData getPiechart() {
@@ -23,7 +23,7 @@ public class TripCardModel {
     }
 
 
-    public ProgressBar getProgress1() {
+   /* public ProgressBar getProgress1() {
         return progress1;
     }
 
@@ -34,6 +34,6 @@ public class TripCardModel {
 
     public ProgressBar getProgress3() {
         return progress3;
-    }
+    }*/
 
 }
