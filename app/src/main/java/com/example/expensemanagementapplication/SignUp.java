@@ -26,7 +26,6 @@ public class SignUp extends AppCompatActivity {
         db=new DataBaseExecution(this);
     }
 
-
     public void nextButtonClick(View view){
 
         fName = firstName.getText().toString().trim();
@@ -63,4 +62,5 @@ public class SignUp extends AppCompatActivity {
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
     }
+
 }

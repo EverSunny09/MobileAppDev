@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void moveToHomeScreen(String email,Boolean showAnimation) {
-        Intent logIn = new Intent(this, AllTrips.class);
+        Intent logIn = new Intent(this, HomeScreen.class);
         logIn.putExtra(HomeScreen.user,email);
         logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();

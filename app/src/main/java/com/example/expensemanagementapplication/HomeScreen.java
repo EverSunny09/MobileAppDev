@@ -35,4 +35,10 @@ public class HomeScreen extends AppCompatActivity {
         logIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(logIn);
     }
+
+    public void addNewTrip(){
+        Intent addNewTrip = new Intent(HomeScreen.this, AddNewTrip1.class);
+        addNewTrip.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(addNewTrip);
+    }
 }

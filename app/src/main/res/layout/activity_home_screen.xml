@@ -252,7 +252,8 @@
                 android:layout_toStartOf="@+id/button2"
                 android:layout_toLeftOf="@+id/button2"
                 android:text="Search Trip"
-                app:backgroundTint="#BFB064D8" />
+                app:backgroundTint="#BFB064D8"
+                android:onClick="addNewTrip"/>
 
         </RelativeLayout>
 
