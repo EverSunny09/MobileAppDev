@@ -6,4 +6,14 @@
     <string name="logIn">Log In</string>
     <string name="signUp">Sign Up</string>
     <string name="notAUser">Not A User ?</string>
+    
+    <string-array name="tripTypes">
+        <item>Meeting</item>
+        <item>Conference</item>
+        <item>Seminar</item>
+        <item>Workshop</item>
+        <item>Others</item>
+    </string-array>
+
 </resources>
+

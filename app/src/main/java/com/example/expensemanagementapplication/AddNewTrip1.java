@@ -2,6 +2,7 @@ package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,7 +19,7 @@ public class AddNewTrip1 extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_trip1);
 
         tripType = (Spinner) findViewById(R.id.tripType);
-        tripType.setAdapter(new ArrayAdapter<TripTypes>(this, R.layout.activity_add_new_trip1,TripTypes.values()));
+        tripType.setPrompt("Choose Trip Type");
 
     }
 

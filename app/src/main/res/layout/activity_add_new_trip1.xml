@@ -14,17 +14,17 @@
         app:layout_constraintBottom_toTopOf="@+id/textDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.611" />
 
     <EditText
         android:id="@+id/textDesc"
         android:layout_width="167dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="80dp"
         android:hint="Trip Description"
         app:layout_constraintBottom_toTopOf="@+id/tripType"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -46,10 +46,10 @@
         android:id="@+id/tripType"
         android:layout_width="167dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="72dp"
+        android:entries="@array/tripTypes"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

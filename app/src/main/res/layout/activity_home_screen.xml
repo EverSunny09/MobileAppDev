@@ -220,7 +220,7 @@
                 android:layout_marginBottom="29dp"
                 android:layout_toStartOf="@+id/button3"
                 android:layout_toLeftOf="@+id/button3"
-                android:onClick="logOut"
+                android:onClick="addNewTrip"
                 android:text="Start Trip"
                 app:backgroundTint="#BFB064D8" />
 
@@ -251,11 +251,26 @@
                 android:layout_marginBottom="28dp"
                 android:layout_toStartOf="@+id/button2"
                 android:layout_toLeftOf="@+id/button2"
+                android:onClick="addNewTrip"
                 android:text="Search Trip"
-                app:backgroundTint="#BFB064D8"
-                android:onClick="addNewTrip"/>
+                app:backgroundTint="#BFB064D8" />
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/logOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:onClick="logOut"
+            android:text="LogOut"
+            app:backgroundTint="#E3E2DA"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.899"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.862" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
