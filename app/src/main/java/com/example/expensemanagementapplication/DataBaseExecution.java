@@ -139,4 +139,30 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean addNewTrip(TripModel Trip){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Column_TripId,Trip.getTripId());
+        cv.put(Column_UserId,Trip.getUserId());
+        cv.put(Column_TripName,Trip.getTripName());
+        cv.put(Column_Destination,Trip.getDestination());
+        cv.put(Column_TripStartDate,Trip.getTripStartDate());
+        cv.put(Column_TripEndDate,Trip.getTripEndDate());
+        cv.put(Column_RequireRiskAssess,Trip.getRequireRiskAssessment());
+        cv.put(Column_OtherType,Trip.getOtherType());
+        cv.put(Column_Desc,Trip.getDescription());
+        cv.put(Column_IsActive,Trip.getIsActive());
+        cv.put(Column_TypeOfTrip,Trip.getTypeOfTrip());
+        cv.put(Column_TotalCompensated,Trip.getTotalCompensated());
+        cv.put(Column_TotalExpense,Trip.getTotalExpense());
+        cv.put(Column_IsInternationalTrip,Trip.getIsInternationalTrip());
+
+
+        long insert = db.insert(Trip_Table,null,cv);
+        if(insert == -1)
+            return false;
+        else
+            return true;
+    }
+
 }
