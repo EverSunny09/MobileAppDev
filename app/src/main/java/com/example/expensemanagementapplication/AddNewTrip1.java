@@ -2,6 +2,7 @@ package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -24,22 +25,7 @@ public class AddNewTrip1 extends AppCompatActivity {
     }
 
     public void nextButtonClick(View view){
-/*
-        fName = firstName.getText().toString().trim();
-        lName = lastName.getText().toString().trim();
-        empId = employeeId.getText().toString().trim();
-
-        if(fName.length()>0 && lName.length()>0 && empId.length()>0){
-            boolean userExists = checkExistingUser(empId);
-            if(userExists){
-                raiseToast("Entered User already Exists");
-            }
-            else{
-                moveToSignUp1();
-            }
-        }
-        else{
-            raiseToast("Enter details");
-        }*/
+        Intent i = new Intent(AddNewTrip1.this,AddNewTrip2.class);
+        startActivity(i);
     }
 }
