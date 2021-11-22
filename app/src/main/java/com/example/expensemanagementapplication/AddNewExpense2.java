@@ -3,6 +3,7 @@ package com.example.expensemanagementapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -28,11 +29,12 @@ public class AddNewExpense2 extends AppCompatActivity {
 
         putExpTypes();
         putcurrTypes();
+        selectDateTime();
+    }
 
-        //Select date
+    public void addExp(View view){
         ExpenseModel expModel = new ExpenseModel(-1,1,expTypes.get(expType), currTypes.get(expCurr), expDateTime, expComm, Integer.parseInt(expAmt), otherType);
         saveExpToDb(expModel);
-        //add expense to db;
     }
 
     private void putExpTypes(){
@@ -66,5 +68,9 @@ public class AddNewExpense2 extends AppCompatActivity {
     private void raiseToast(String toastMsg){
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
+    }
+
+    private void selectDateTime(){
+        //select expense date and time
     }
 }

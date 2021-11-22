@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip1.xml" value="0.24909420289855072" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip2.xml" value="0.264" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip3.xml" value="0.2359375" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_home_screen.xml" value="0.264" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_log_in.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -13,15 +10,16 @@
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_sign_up1.xml" value="0.25" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_expense1.xml" value="0.3451086956521739" />
-        <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_expense2.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_expense2.xml" value="0.33" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_trip1.xml" value="0.33" />
-        <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_trip1.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_trip2.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_all_trips.xml" value="0.25" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_home_screen.xml" value="0.3423110338835795" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/activity_sign_up1.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/all_trips_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/other_type_dailog_box.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/sg0269n/OneDrive - University of Greenwich/MobileAppDevProject/app/src/main/res/layout/activity_home_screen.xml" value="0.28940217391304346" />
       </map>
     </option>

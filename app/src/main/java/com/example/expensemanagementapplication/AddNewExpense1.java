@@ -1,8 +1,11 @@
 package com.example.expensemanagementapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,11 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 public class AddNewExpense1 extends AppCompatActivity {
 
-    EditText expenseComments, expenseAmount;
+    EditText expenseComments, expenseAmount, otherType;
     Spinner expenseType, expenseCurrency;
-    String expComm, expAmt, expType, expCurr;
+    String expComm, expAmt, expType, expCurr, expOtherType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,7 @@ public class AddNewExpense1 extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_expense1);
 
         expenseComments = (EditText) findViewById(R.id.expenseComments);
+        otherType = (EditText) findViewById(R.id.otherType);
         expenseAmount = (EditText) findViewById(R.id.expenseAmount);
         expenseType = (Spinner) findViewById(R.id.expenseTypeSpinner);
         expenseCurrency = (Spinner) findViewById(R.id.expenseCurrencySpinner);
@@ -36,6 +42,13 @@ public class AddNewExpense1 extends AppCompatActivity {
                 if(expenseType.getItemAtPosition(position).equals("Others")){
                     //pop up for edit text
                     raiseToast("pop up happened");
+                    otherType.setVisibility(View.VISIBLE);
+
+                    /*AlertDialog.Builder popUP = new AlertDialog.Builder(AddNewExpense1.this);
+                    popUP.setView(R.layout.other_type_dailog_box);
+                    AlertDialog alertPop = popUP.create();
+                    popUP.show();*/
+
                 }
             }
 
@@ -52,6 +65,7 @@ public class AddNewExpense1 extends AppCompatActivity {
         expCurr = expenseCurrency.getSelectedItem().toString();
         expComm = expenseComments.getText().toString();
         expAmt = expenseAmount.getText().toString();
+        expOtherType = otherType.getText().toString();
 
         if(expAmt.isEmpty()){
             raiseToast("Please enter the Amount of Expense");
@@ -71,6 +85,9 @@ public class AddNewExpense1 extends AppCompatActivity {
             addExpenseNextPage.putExtra(AddNewExpense2.expAmt,expAmt);
             addExpenseNextPage.putExtra(AddNewExpense2.expType,expType);
             addExpenseNextPage.putExtra(AddNewExpense2.expCurr,expCurr);
+            if(!expOtherType.isEmpty()){
+                addExpenseNextPage.putExtra(AddNewExpense2.otherType,expOtherType);
+            }
             startActivity(addExpenseNextPage);
         }
     }
