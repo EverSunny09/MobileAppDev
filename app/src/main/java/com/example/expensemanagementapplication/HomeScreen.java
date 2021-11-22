@@ -41,4 +41,9 @@ public class HomeScreen extends AppCompatActivity {
         addNewTrip.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addNewTrip);
     }
+
+    public void addNewExpense(View view){
+        Intent addNewExpense = new Intent(HomeScreen.this, AddNewExpense1.class);
+        startActivity(addNewExpense);
+    }
 }
