@@ -1,0 +1,70 @@
+package com.example.expensemanagementapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Toast;
+
+import java.util.Date;
+import java.util.HashMap;
+
+public class AddNewExpense2 extends AppCompatActivity {
+
+    public static final String expComm = "abc";
+    public static final String expAmt = "new expense";
+    public static final String expType = "food";
+    public static final String expCurr = "INR";
+    public static final String otherType ="others";
+    public long expDateTime;
+
+    HashMap<String, Integer> expTypes = new HashMap<String, Integer>();
+    HashMap<String, Integer> currTypes = new HashMap<String, Integer>();
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_new_expense2);
+
+        putExpTypes();
+        putcurrTypes();
+
+        //Select date
+        ExpenseModel expModel = new ExpenseModel(-1,1,expTypes.get(expType), currTypes.get(expCurr), expDateTime, expComm, Integer.parseInt(expAmt), otherType);
+        saveExpToDb(expModel);
+        //add expense to db;
+    }
+
+    private void putExpTypes(){
+        expTypes.put("Food",1);
+        expTypes.put("Accommodation",2);
+        expTypes.put("Travel",3);
+    }
+
+    private void putcurrTypes(){
+        currTypes.put("GBP",1);
+        currTypes.put("INR",2);
+        currTypes.put("EU",3);
+        currTypes.put("USD",4);
+        currTypes.put("CAD",5);
+        currTypes.put("AUD",6);
+    }
+
+    private void saveExpToDb(ExpenseModel expDBModel){
+        DataBaseExecution db = new DataBaseExecution(this);
+        boolean output = db.addNewExpense(expDBModel);
+        if(output){
+            raiseToast("User added successfully. Please Login");
+            //move to trip details with all expense
+        }
+
+        else{
+            raiseToast("Something went wrong! Please try again.");
+        }
+    }
+
+    private void raiseToast(String toastMsg){
+        Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
+        alertText.show();
+    }
+}

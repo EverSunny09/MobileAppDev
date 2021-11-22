@@ -16,6 +16,12 @@
             android:name=".AddNewTrip2"
             android:exported="false" />
         <activity
+            android:name=".AddNewExpense2"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewExpense1"
+            android:exported="false" />
+        <activity
             android:name=".AddNewTrip1"
             android:exported="false" />
         <activity
