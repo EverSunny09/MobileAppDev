@@ -7,11 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 public class AddNewTrip2 extends AppCompatActivity {
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_trip2);
+
+
+        TripModel tripModel = getIntent().getParcelableExtra("tripmodel");
+
+
     }
     public void nextButtonClick(View view){
         Intent i = new Intent(AddNewTrip2.this,AddNewTrip3.class);

@@ -11,14 +11,14 @@
         android:layout_width="165dp"
         android:layout_height="53dp"
         android:hint="Trip Name"
-        app:layout_constraintBottom_toTopOf="@+id/textDesc"
+        app:layout_constraintBottom_toTopOf="@+id/tripDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.611" />
 
     <EditText
-        android:id="@+id/textDesc"
+        android:id="@+id/tripDesc"
         android:layout_width="167dp"
         android:layout_height="51dp"
         android:layout_marginBottom="80dp"
@@ -29,6 +29,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/otherType"
+        android:layout_width="167dp"
+        android:layout_height="51dp"
+        android:hint="Other Type"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripType" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -42,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731"
+        app:layout_constraintVertical_bias="0.779"
         app:srcCompat="@android:drawable/ic_menu_send"
         tools:ignore="MissingConstraints" />
 
@@ -57,6 +68,6 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="0.841" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

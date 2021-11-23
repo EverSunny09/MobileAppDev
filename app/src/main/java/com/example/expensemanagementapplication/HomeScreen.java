@@ -21,7 +21,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         DataBaseExecution db = new DataBaseExecution(this);
 
-        db.getAllTripsDetails();
+        //db.getAllTripsDetails();
 
     }
 

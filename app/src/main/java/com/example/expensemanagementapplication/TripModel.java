@@ -1,6 +1,9 @@
 package com.example.expensemanagementapplication;
 
-public class TripModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class TripModel implements Parcelable {
     private int TripId;
     private int UserId;
     private String TripName;
@@ -32,6 +35,35 @@ public class TripModel {
         IsInternationalTrip = isInternationalTrip;
         TotalExpense = totalExpense;
     }
+
+    protected TripModel(Parcel in) {
+        TripId = in.readInt();
+        UserId = in.readInt();
+        TripName = in.readString();
+        Destination = in.readString();
+        TripStartDate = in.readString();
+        TripEndDate = in.readString();
+        RequireRiskAssessment = in.readInt();
+        Description = in.readString();
+        IsActive = in.readInt();
+        TypeOfTrip = in.readString();
+        OtherType = in.readString();
+        TotalCompensated = in.readString();
+        IsInternationalTrip = in.readInt();
+        TotalExpense = in.readString();
+    }
+
+    public static final Creator<TripModel> CREATOR = new Creator<TripModel>() {
+        @Override
+        public TripModel createFromParcel(Parcel in) {
+            return new TripModel(in);
+        }
+
+        @Override
+        public TripModel[] newArray(int size) {
+            return new TripModel[size];
+        }
+    };
 
     public int getTripId() {
         return TripId;
@@ -167,5 +199,28 @@ public class TripModel {
                 ", IsInternationalTrip=" + IsInternationalTrip +
                 ", TotalExpense='" + TotalExpense + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(TripId);
+        dest.writeInt(UserId);
+        dest.writeString(TripName);
+        dest.writeString(Destination);
+        dest.writeString(TripStartDate);
+        dest.writeString(TripEndDate);
+        dest.writeInt(RequireRiskAssessment);
+        dest.writeString(Description);
+        dest.writeInt(IsActive);
+        dest.writeString(TypeOfTrip);
+        dest.writeString(OtherType);
+        dest.writeString(TotalCompensated);
+        dest.writeInt(IsInternationalTrip);
+        dest.writeString(TotalExpense);
     }
 }
