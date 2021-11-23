@@ -17,7 +17,7 @@ import java.util.Date;
 public class AddNewTrip3 extends AppCompatActivity {
 
     TextView startDateText,endDateText;
-
+    TripModel tripModel = new TripModel();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

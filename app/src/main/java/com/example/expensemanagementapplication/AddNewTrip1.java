@@ -24,12 +24,12 @@ public class AddNewTrip1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_trip1);
+        getValuesFromComponents();
+        setSpinnerListener();
 
-        tripName = (EditText)findViewById(R.id.tripName);
-        tripDescription = (EditText)findViewById(R.id.tripDesc);
-        otherType = (EditText)findViewById(R.id.otherType);
-        tripType = (Spinner) findViewById(R.id.tripType);
+    }
 
+    private void setSpinnerListener() {
         tripType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -41,6 +41,13 @@ public class AddNewTrip1 extends AppCompatActivity {
                 //otherType.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void getValuesFromComponents() {
+        tripName = (EditText)findViewById(R.id.tripName);
+        tripDescription = (EditText)findViewById(R.id.tripDesc);
+        otherType = (EditText)findViewById(R.id.otherType);
+        tripType = (Spinner) findViewById(R.id.tripType);
     }
 
     private void setOtherField(int position){
