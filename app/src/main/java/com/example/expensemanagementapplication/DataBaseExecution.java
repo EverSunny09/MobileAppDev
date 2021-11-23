@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 
@@ -39,7 +40,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     private static final String Column_IsActive ="is_active";
     private static final String Column_TypeOfTrip="type_of_trip";
     private static final String Column_OtherType="other_type";
-    private static final String Column_TotalCompensated="total_compensated";
+    private static final String Column_TotalCompensated="total_compensation";
     private static final String Column_IsInternationalTrip="is_international_trip";
     private static final String Column_TotalExpense="total_expense";
 
@@ -72,7 +73,6 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         db.execSQL(createUserTable);
         db.execSQL(createTripTable);
         db.execSQL(createExpenseTable);
-
     }
 
     @Override
@@ -163,6 +163,44 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return false;
         else
             return true;
+    }
+
+    public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
+        String query = "SELECT trip_id, trip_name, trip_destination, trip_start_date, trip_end_date, total_expense, total_compesation FROM trip"
+                + " WHERE user_id IN (" + makePlaceholders(tripIds.size()) + ")";
+        Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
+        return cursor;
+    }
+
+    public Cursor getAllExpenseDetails(ArrayList<Integer> tripIds){
+        String query = "SELECT trip_id, expense_id, expense_amount, expense_type FROM expense"
+                + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
+        Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
+        return cursor;
+    }
+
+    String[] getStringFromInt(ArrayList<Integer> Ids){
+        String[] strArray = new String[Ids.size()];
+        for (int i = 0; i < Ids.size(); i++) {
+            strArray[i] = String.valueOf(Ids.get(i));
+        }
+        return strArray;
+    }
+
+
+    String makePlaceholders(int len) {
+
+        if (len < 1) {
+            // It will lead to an invalid query anyway ..
+            throw new RuntimeException("No placeholders");
+        } else {
+            StringBuilder sb = new StringBuilder(len * 2 - 1);
+            sb.append("?");
+            for (int i = 1; i < len; i++) {
+                sb.append(",?");
+            }
+            return sb.toString();
+        }
     }
 
 }

@@ -1,0 +1,92 @@
+package com.example.expensemanagementapplication;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class TripDetailModel {
+    int id;
+    String tripName;
+    String destination;
+    String startDate;
+    String endDate;
+    int totalExpense;
+    int totalCompesation;
+    ArrayList<ExpenseDetailModel> allExpenses;
+
+    public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation) {
+        this.id = id;
+        this.tripName = tripName;
+        this.destination = destination;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalExpense = totalExpense;
+        this.totalCompesation = totalCompesation;
+    }
+
+    public ArrayList<ExpenseDetailModel> getAllExpenses() {
+        return allExpenses;
+    }
+
+    public void setAllExpenses(ArrayList<ExpenseDetailModel> allExpenses) {
+        this.allExpenses = allExpenses;
+    }
+
+    public TripDetailModel() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTripName() {
+        return tripName;
+    }
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getTotalExpense() {
+        return totalExpense;
+    }
+
+    public void setTotalExpense(int totalExpense) {
+        this.totalExpense = totalExpense;
+    }
+
+    public int getTotalCompesation() {
+        return totalCompesation;
+    }
+
+    public void setTotalCompesation(int totalCompesation) {
+        this.totalCompesation = totalCompesation;
+    }
+}

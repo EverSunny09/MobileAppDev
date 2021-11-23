@@ -19,6 +19,9 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        DataBaseExecution db = new DataBaseExecution(this);
+
+        db.getAllTripsDetails();
 
     }
 

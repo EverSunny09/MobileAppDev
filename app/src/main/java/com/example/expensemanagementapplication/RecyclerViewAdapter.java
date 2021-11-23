@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,9 +29,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         PieChart pieChart;
-        /*ProgressBar p1;
-        ProgressBar p2;
-        ProgressBar p3;*/
+        ProgressBar p1;
+        TextView header;
 
         public void setUpPieChart(){
             pieChart.setDrawHoleEnabled(true);
@@ -54,10 +54,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             pieChart = itemView.findViewById(R.id.pieChart);
             setUpPieChart();
-            /*p1 = itemView.findViewById(R.id.progressBar1);
-            p2 = itemView.findViewById(R.id.progressBar2);
-            p3 = itemView.findViewById(R.id.progressBar3);*/
-
+            p1 = itemView.findViewById(R.id.totalCompBar);
+            header = itemView.findViewById(R.id.tripDetailView);
         }
     }
 
@@ -73,7 +71,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         TripCardModel model = cardModel.get(position);
-        holder.pieChart.setData(model.getPiechart());
+        holder.pieChart.setData(model.getPieChart());
+        holder.p1.setProgress(model.getProgress1());
+        holder.header.setText(model.getTextView());
     }
 
     @Override
