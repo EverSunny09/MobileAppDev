@@ -3,6 +3,7 @@ package com.example.expensemanagementapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Network;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -19,6 +20,7 @@ public class AddNewTrip2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_trip2);
+
         getPreviousActivityValue();
         getValuesFromComponents();
         setDefaultValues();
@@ -82,6 +84,9 @@ public class AddNewTrip2 extends AppCompatActivity {
             moveToNext();
         }
     }
+    private void previousButtonClick(View view){
+        finish();
+    }
 
     private void moveToNext(){
         Intent i = new Intent(AddNewTrip2.this,AddNewTrip3.class);
@@ -105,4 +110,5 @@ public class AddNewTrip2 extends AppCompatActivity {
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
     }
+
 }
