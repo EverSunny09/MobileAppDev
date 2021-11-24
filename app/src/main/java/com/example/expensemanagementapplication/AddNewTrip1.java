@@ -48,6 +48,7 @@ public class AddNewTrip1 extends AppCompatActivity {
         tripDescription = (EditText)findViewById(R.id.tripDesc);
         otherType = (EditText)findViewById(R.id.otherType);
         tripType = (Spinner) findViewById(R.id.tripType);
+        tripModel.setTypeOfTrip("Meeting");
     }
 
     private void setOtherField(int position){
@@ -59,6 +60,7 @@ public class AddNewTrip1 extends AppCompatActivity {
             otherType.setVisibility(View.GONE);
             isOtherType=false;
         }
+        tripModel.setTypeOfTrip(tripType.getItemAtPosition(position).toString());
     }
 
     public void nextButtonClick(View view){

@@ -54,7 +54,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 3);
+        super(context, dbName, null, 4);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -142,7 +142,6 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public boolean addNewTrip(TripModel Trip){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Column_TripId,Trip.getTripId());
         cv.put(Column_UserId,Trip.getUserId());
         cv.put(Column_TripName,Trip.getTripName());
         cv.put(Column_Destination,Trip.getDestination());

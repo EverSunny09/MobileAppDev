@@ -7,6 +7,92 @@
     tools:context=".AddNewTrip3">
 
 
+    <Button
+        android:id="@+id/saveButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discard"
+        app:backgroundTint="#F44336"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endDateText"
+        android:onClick="onDiscardButtonClicked"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/tripName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119" />
+
+    <TextView
+        android:id="@+id/tripDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripDesc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripName"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <TextView
+        android:id="@+id/tripType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripType"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDesc"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <TextView
+        android:id="@+id/tripDest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripDest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripType"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <TextView
+        android:id="@+id/isInternational"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripIsInternational"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isRiskAssessmentRequired"
+        app:layout_constraintVertical_bias="0.151" />
+
+    <TextView
+        android:id="@+id/isRiskAssessmentRequired"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TripIsRiskAssessmentRequired"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDest"
+        app:layout_constraintVertical_bias="0.14" />
+
     <TextView
         android:id="@+id/startDateText"
         android:layout_width="wrap_content"
@@ -14,10 +100,10 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintTop_toBottomOf="@+id/isInternational"
+        app:layout_constraintVertical_bias="0.198" />
 
     <TextView
         android:id="@+id/endDateText"
@@ -26,8 +112,22 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDateText"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.343" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Trip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endDateText"
+        android:onClick="onSaveButtonClicked"
+        app:layout_constraintVertical_bias="0.587" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,8 @@ public class TripModel implements Parcelable {
     private int UserId;
     private String TripName;
     private String Destination;
-    private String TripStartDate;
-    private String TripEndDate;
+    private long TripStartDate;
+    private long TripEndDate;
     private int RequireRiskAssessment;
     private String Description;
     private int IsActive;
@@ -18,8 +18,33 @@ public class TripModel implements Parcelable {
     private String TotalCompensated;
     private int IsInternationalTrip;
     private String TotalExpense;
+    private int TypeOfTripId;
 
-    public TripModel(int tripId, int userId, String tripName, String destination, String tripStartDate, String tripEndDate, int requireRiskAssessment, String description, int isActive, String typeOfTrip, String otherType, String totalCompensated, int isInternationalTrip, String totalExpense) {
+
+    @Override
+    public String toString() {
+        return "TripModel{" +
+                "TripId=" + TripId +
+                ", UserId=" + UserId +
+                ", TripName='" + TripName + '\'' +
+                ", Destination='" + Destination + '\'' +
+                ", TripStartDate=" + TripStartDate +
+                ", TripEndDate=" + TripEndDate +
+                ", RequireRiskAssessment=" + RequireRiskAssessment +
+                ", Description='" + Description + '\'' +
+                ", IsActive=" + IsActive +
+                ", TypeOfTrip='" + TypeOfTrip + '\'' +
+                ", OtherType='" + OtherType + '\'' +
+                ", TotalCompensated='" + TotalCompensated + '\'' +
+                ", IsInternationalTrip=" + IsInternationalTrip +
+                ", TotalExpense='" + TotalExpense + '\'' +
+                ", TypeOfTripId=" + TypeOfTripId +
+                '}';
+    }
+
+
+
+    public TripModel(int tripId, int userId, String tripName, String destination, long tripStartDate, long tripEndDate, int requireRiskAssessment, String description, int isActive, String typeOfTrip, String otherType, String totalCompensated, int isInternationalTrip, String totalExpense,int typeOfTripId) {
         TripId = tripId;
         UserId = userId;
         TripName = tripName;
@@ -34,6 +59,7 @@ public class TripModel implements Parcelable {
         TotalCompensated = totalCompensated;
         IsInternationalTrip = isInternationalTrip;
         TotalExpense = totalExpense;
+        TypeOfTripId=typeOfTripId;
     }
 
     protected TripModel(Parcel in) {
@@ -41,8 +67,8 @@ public class TripModel implements Parcelable {
         UserId = in.readInt();
         TripName = in.readString();
         Destination = in.readString();
-        TripStartDate = in.readString();
-        TripEndDate = in.readString();
+        TripStartDate = in.readLong();
+        TripEndDate = in.readLong();
         RequireRiskAssessment = in.readInt();
         Description = in.readString();
         IsActive = in.readInt();
@@ -51,6 +77,7 @@ public class TripModel implements Parcelable {
         TotalCompensated = in.readString();
         IsInternationalTrip = in.readInt();
         TotalExpense = in.readString();
+        TypeOfTripId = in.readInt();
     }
 
     public static final Creator<TripModel> CREATOR = new Creator<TripModel>() {
@@ -97,19 +124,19 @@ public class TripModel implements Parcelable {
         Destination = destination;
     }
 
-    public String getTripStartDate() {
+    public long getTripStartDate() {
         return TripStartDate;
     }
 
-    public void setTripStartDate(String tripStartDate) {
+    public void setTripStartDate(long tripStartDate) {
         TripStartDate = tripStartDate;
     }
 
-    public String getTripEndDate() {
+    public long getTripEndDate() {
         return TripEndDate;
     }
 
-    public void setTripEndDate(String tripEndDate) {
+    public void setTripEndDate(long tripEndDate) {
         TripEndDate = tripEndDate;
     }
 
@@ -157,6 +184,14 @@ public class TripModel implements Parcelable {
         return TotalCompensated;
     }
 
+    public int getTypeOfTripId() {
+        return TypeOfTripId;
+    }
+
+    public void setTypeOfTripId(int typeOfTripId) {
+        TypeOfTripId = typeOfTripId;
+    }
+
     public void setTotalCompensated(String totalCompensated) {
         TotalCompensated = totalCompensated;
     }
@@ -182,26 +217,6 @@ public class TripModel implements Parcelable {
     }
 
     @Override
-    public String toString() {
-        return "TripModel{" +
-                "TripId=" + TripId +
-                ", UserId=" + UserId +
-                ", TripName='" + TripName + '\'' +
-                ", Destination='" + Destination + '\'' +
-                ", TripStartDate='" + TripStartDate + '\'' +
-                ", TripEndDate='" + TripEndDate + '\'' +
-                ", RequireRiskAssessment=" + RequireRiskAssessment +
-                ", Description='" + Description + '\'' +
-                ", IsActive=" + IsActive +
-                ", TypeOfTrip='" + TypeOfTrip + '\'' +
-                ", OtherType='" + OtherType + '\'' +
-                ", TotalCompensated='" + TotalCompensated + '\'' +
-                ", IsInternationalTrip=" + IsInternationalTrip +
-                ", TotalExpense='" + TotalExpense + '\'' +
-                '}';
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -212,8 +227,8 @@ public class TripModel implements Parcelable {
         dest.writeInt(UserId);
         dest.writeString(TripName);
         dest.writeString(Destination);
-        dest.writeString(TripStartDate);
-        dest.writeString(TripEndDate);
+        dest.writeLong(TripStartDate);
+        dest.writeLong(TripEndDate);
         dest.writeInt(RequireRiskAssessment);
         dest.writeString(Description);
         dest.writeInt(IsActive);
@@ -222,5 +237,6 @@ public class TripModel implements Parcelable {
         dest.writeString(TotalCompensated);
         dest.writeInt(IsInternationalTrip);
         dest.writeString(TotalExpense);
+        dest.writeInt(TypeOfTripId);
     }
 }
