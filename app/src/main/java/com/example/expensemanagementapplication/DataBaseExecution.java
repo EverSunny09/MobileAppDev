@@ -54,7 +54,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 4);
+        super(context, dbName, null, 5);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -65,7 +65,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         String createUserTable = "CREATE TABLE " + User_Table + " ( " + Column_UserId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_FirstName + " TEXT, " + Column_LastName + " TEXT, " + Column_Password + " TEXT, " + Column_Email+ " TEXT, " + Column_BaseCurrency + " INTEGER, " + Column_EmployeeId + " TEXT )";
                                  // CREATE TABLE USER_TABLE ( UserId int PRIMARY KEY AUTOINCREMENT, FirstName Text, LastName TEXT, Password TEXT, Email TEXT, BaseCurrency int, employeeId text )
 
-        String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " INTEGER, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " NUMERIC, " + Column_TotalExpense + " NUMERIC, " + Column_IsInternationalTrip + " INTEGER );";
+        String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " TEXT, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " NUMERIC, " + Column_TotalExpense + " NUMERIC, " + Column_IsInternationalTrip + " INTEGER );";
 
         String createExpenseTable = "CREATE TABLE " + Expense_Table + " ( " + Column_ExpenseId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_TripId + " INTEGER, " + Column_TypeOfExpense + " INTEGER, " + Column_TimeOfExpense + " NUMERIC, " + Column_AmountOfExpense + " NUMERIC, " + Column_Comments + " TEXT, " + Column_Currency + " INTEGER, " + Column_OtherType +" TEXT );";
 
@@ -93,7 +93,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         return  results.getCount()>0;
     }
 
-    public boolean addNewUser(UserModel User){
+    public long addNewUser(UserModel User){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Column_FirstName,User.getFirstName());
@@ -102,11 +102,11 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         cv.put(Column_Email,User.getEmail());
         cv.put(Column_BaseCurrency,User.getBaseCurrency());
         cv.put(Column_EmployeeId,User.getEmployeeId());
-        long insert = db.insert(User_Table,null,cv);
-        if(insert == -1)
+        return db.insert(User_Table,null,cv);
+        /*if(insert == -1)
             return false;
         else
-            return true;
+            return true;*/
     }
 
     public String getPwdFromDB (String userEmail){

@@ -18,7 +18,6 @@ public class TripModel implements Parcelable {
     private String TotalCompensated;
     private int IsInternationalTrip;
     private String TotalExpense;
-    private int TypeOfTripId;
 
 
     @Override
@@ -38,7 +37,6 @@ public class TripModel implements Parcelable {
                 ", TotalCompensated='" + TotalCompensated + '\'' +
                 ", IsInternationalTrip=" + IsInternationalTrip +
                 ", TotalExpense='" + TotalExpense + '\'' +
-                ", TypeOfTripId=" + TypeOfTripId +
                 '}';
     }
 
@@ -59,7 +57,6 @@ public class TripModel implements Parcelable {
         TotalCompensated = totalCompensated;
         IsInternationalTrip = isInternationalTrip;
         TotalExpense = totalExpense;
-        TypeOfTripId=typeOfTripId;
     }
 
     protected TripModel(Parcel in) {
@@ -77,7 +74,6 @@ public class TripModel implements Parcelable {
         TotalCompensated = in.readString();
         IsInternationalTrip = in.readInt();
         TotalExpense = in.readString();
-        TypeOfTripId = in.readInt();
     }
 
     public static final Creator<TripModel> CREATOR = new Creator<TripModel>() {
@@ -184,14 +180,6 @@ public class TripModel implements Parcelable {
         return TotalCompensated;
     }
 
-    public int getTypeOfTripId() {
-        return TypeOfTripId;
-    }
-
-    public void setTypeOfTripId(int typeOfTripId) {
-        TypeOfTripId = typeOfTripId;
-    }
-
     public void setTotalCompensated(String totalCompensated) {
         TotalCompensated = totalCompensated;
     }
@@ -237,6 +225,5 @@ public class TripModel implements Parcelable {
         dest.writeString(TotalCompensated);
         dest.writeInt(IsInternationalTrip);
         dest.writeString(TotalExpense);
-        dest.writeInt(TypeOfTripId);
     }
 }
