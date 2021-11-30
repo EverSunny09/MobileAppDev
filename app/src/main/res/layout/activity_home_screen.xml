@@ -25,6 +25,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
 
+            <Button
+                android:id="@+id/allTrips"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="210dp"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginRight="26dp"
+                android:layout_marginBottom="127dp"
+                android:onClick="showAllTrips"
+                android:text="All Trips"
+                app:backgroundTint="#BFB064D8" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="106dp"
@@ -212,12 +232,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:layout_marginBottom="29dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="30dp"
                 android:layout_toStartOf="@+id/button3"
                 android:layout_toLeftOf="@+id/button3"
                 android:onClick="addNewTrip"
@@ -236,9 +256,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="28dp"
+                android:onClick="addNewExpense"
                 android:text="Add New Expense"
-                app:backgroundTint="#BFB064D8"
-                android:onClick="addNewExpense"/>
+                app:backgroundTint="#BFB064D8" />
 
             <Button
                 android:id="@+id/button3"

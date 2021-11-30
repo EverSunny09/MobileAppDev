@@ -165,14 +165,14 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     }
 
     public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
-        String query = "SELECT trip_id, trip_name, trip_destination, trip_start_date, trip_end_date, total_expense, total_compesation FROM trip"
+        String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation FROM trip"
                 + " WHERE user_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;
     }
 
     public Cursor getAllExpenseDetails(ArrayList<Integer> tripIds){
-        String query = "SELECT trip_id, expense_id, expense_amount, expense_type FROM expense"
+        String query = "SELECT trip_id, expense_id, amount_of_expense, type_of_expense FROM expense"
                 + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;

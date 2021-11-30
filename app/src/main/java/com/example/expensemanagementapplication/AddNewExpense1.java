@@ -76,7 +76,7 @@ public class AddNewExpense1 extends AppCompatActivity {
         }
 
         if(expCurr.isEmpty()){
-            raiseToast("Please choose teh Currency of Expense");
+            raiseToast("Please choose the Currency of Expense");
         }
 
         else{

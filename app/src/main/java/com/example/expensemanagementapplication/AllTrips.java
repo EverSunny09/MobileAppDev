@@ -37,15 +37,15 @@ import java.util.stream.Collectors;
 
 public class AllTrips extends AppCompatActivity {
 
-    int userId = 0;
+    int userId;
+    public static final String userName= "abc";
     private PieChart pieChart;
-    ArrayList<TripCardModel> cardModel;
+    ArrayList<TripCardModel> cardModel = new ArrayList<>();
     RecyclerView recycler1;
     PieData pieData1, pieData2, pieData3;
     ProgressBar p1,p2,p3;
     TextView t1;
     ArrayList<Integer> allTrips = new ArrayList<>();
-    DataBaseExecution db = new DataBaseExecution(this);
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -55,8 +55,8 @@ public class AllTrips extends AppCompatActivity {
 
         //pieChart = findViewById(R.id.pieChart);
         recycler1 = findViewById(R.id.recycler1);
-        cardModel = new ArrayList<>();
 
+        userId = getUserId();
         allTrips = getUserAllTrips(userId);
         createCardModelData(allTrips);
 
@@ -128,6 +128,7 @@ public class AllTrips extends AppCompatActivity {
     }
 
     private ArrayList<Integer> getUserAllTrips(int userId){
+        DataBaseExecution db = new DataBaseExecution(this);
         ArrayList<Integer> trips = new ArrayList<Integer>();
         Cursor allTripsData = db.getData("trip_id","trip","user_id",String.valueOf(userId));
         allTripsData.moveToFirst();
@@ -141,7 +142,7 @@ public class AllTrips extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void createCardModelData(ArrayList<Integer> trips){
         if(!trips.isEmpty()){
-
+            DataBaseExecution db = new DataBaseExecution(this);
             Cursor tripResults = db.getAllTripsDetails(trips);
             Cursor expenseResults = db.getAllExpenseDetails(trips);
             ArrayList<ExpenseDetailModel> allExpenseDetails = getExpenseDetailsList(expenseResults);
@@ -206,7 +207,7 @@ public class AllTrips extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setCardModelData(ArrayList<TripDetailModel> allTripDetails) {
 
-        ArrayList<TripCardModel> tripModels = new ArrayList<>();
+        //ArrayList<TripCardModel> tripModels = new ArrayList<>();
 
         for(TripDetailModel trip : allTripDetails){
 
@@ -217,7 +218,7 @@ public class AllTrips extends AppCompatActivity {
 
             String tripDetails = "<b>" + trip.getTripName() + "</b> /r/n<i>" + trip.getStartDate() + "-" + trip.getEndDate() + "</i>";
 
-            tripModels.add(new TripCardModel(tripChart,trip.getTotalCompesation(),tripDetails));
+            cardModel.add(new TripCardModel(tripChart,trip.getTotalCompesation(),tripDetails));
         }
 
     }
@@ -262,4 +263,8 @@ public class AllTrips extends AppCompatActivity {
         return expenses;*/
     }
 
+    public int getUserId(){
+        SessionManagement sessionManagement=new SessionManagement(AllTrips.this);
+        return sessionManagement.getSession();
+    }
 }

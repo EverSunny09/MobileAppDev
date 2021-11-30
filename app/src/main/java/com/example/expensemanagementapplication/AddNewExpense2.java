@@ -2,6 +2,7 @@ package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class AddNewExpense2 extends AppCompatActivity {
     public static final String otherType ="others";
     public long expDateTime;
 
+    String excComm,expAmtt,expTypee,expCurrr,otherTypee;
+
     HashMap<String, Integer> expTypes = new HashMap<String, Integer>();
     HashMap<String, Integer> currTypes = new HashMap<String, Integer>();
 
@@ -26,10 +29,19 @@ public class AddNewExpense2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_expense2);
-
+        getPreviousValues();
         putExpTypes();
         putcurrTypes();
         selectDateTime();
+    }
+
+    public void getPreviousValues(){
+        Intent i = getIntent();
+        excComm = i.getStringExtra(expComm);
+        expAmtt = i.getStringExtra(expAmt);
+        expTypee = i.getStringExtra(expType);
+        expCurrr = i.getStringExtra(expCurr);
+        otherTypee = i.getStringExtra(otherType);
     }
 
     public void addExp(View view){
