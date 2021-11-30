@@ -11,7 +11,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.SearchView;
+//import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public class AllTripsListView extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
-        /*MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
+        MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) myActionMenuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -56,7 +57,7 @@ public class AllTripsListView extends AppCompatActivity {
                 }
                 return true;
             }
-        });*/
+        });
 
         return true;
     }
