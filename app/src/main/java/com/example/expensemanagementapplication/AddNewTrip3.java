@@ -113,13 +113,19 @@ public class AddNewTrip3 extends AppCompatActivity {
         raiseToast("Trip added Successfully! ");
     }
 
+    private void moveToAllTrips(){
+        Intent allTrips = new Intent(this, AllTripsListView.class);
+        startActivity(allTrips);
+        raiseToast("Trip added Successfully! ");
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onSaveButtonClicked(View view){
         boolean successfullyAddedTrip =  saveDataIntoDB();
         if(!successfullyAddedTrip)
             raiseToast("Please try again! ");
         else{
-            moveToHomeScreen();
+            moveToAllTrips();
         }
 
     }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Toast;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -39,6 +40,11 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(logIn);
     }
 
+    public void moveToAllTrips(View view){
+        Intent allTrips = new Intent(this, AllTripsListView.class);
+        startActivity(allTrips);
+    }
+
     public void addNewTrip(View view){
         Intent addNewTrip = new Intent(HomeScreen.this, AddNewTrip1.class);
         addNewTrip.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -48,5 +54,9 @@ public class HomeScreen extends AppCompatActivity {
     public void addNewExpense(View view){
         Intent addNewExpense = new Intent(HomeScreen.this, AddNewExpense1.class);
         startActivity(addNewExpense);
+    }
+    private void raiseToast(String toastMsg){
+        Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
+        alertText.show();
     }
 }

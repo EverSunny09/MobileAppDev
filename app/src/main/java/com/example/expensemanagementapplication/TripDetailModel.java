@@ -7,13 +7,14 @@ public class TripDetailModel {
     int id;
     String tripName;
     String destination;
+    String description;
     String startDate;
     String endDate;
     int totalExpense;
     int totalCompesation;
     ArrayList<ExpenseDetailModel> allExpenses;
 
-    public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation) {
+    public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation,String description) {
         this.id = id;
         this.tripName = tripName;
         this.destination = destination;
@@ -21,6 +22,7 @@ public class TripDetailModel {
         this.endDate = endDate;
         this.totalExpense = totalExpense;
         this.totalCompesation = totalCompesation;
+        this.description=description;
     }
 
     public ArrayList<ExpenseDetailModel> getAllExpenses() {
@@ -48,6 +50,14 @@ public class TripDetailModel {
 
     public void setTripName(String tripName) {
         this.tripName = tripName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDestination() {

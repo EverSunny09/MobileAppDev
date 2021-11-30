@@ -252,7 +252,7 @@
                 android:layout_marginBottom="28dp"
                 android:layout_toStartOf="@+id/button2"
                 android:layout_toLeftOf="@+id/button2"
-                android:onClick="addNewTrip"
+                android:onClick="moveToAllTrips"
                 android:text="Search Trip"
                 app:backgroundTint="#BFB064D8" />
 
