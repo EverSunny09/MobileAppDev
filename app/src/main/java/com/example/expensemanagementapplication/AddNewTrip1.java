@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 public class AddNewTrip1 extends AppCompatActivity {
 
+
     EditText tripName, tripDescription, otherType;
     Spinner tripType ;
     TripModel tripModel = new TripModel();
     Boolean isOtherType;
+    Boolean isEdit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,10 @@ public class AddNewTrip1 extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_trip1);
         getValuesFromComponents();
         setSpinnerListener();
+        checkIfIsEdit();
+    }
+
+    private void checkIfIsEdit(){
 
     }
 

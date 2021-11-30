@@ -93,12 +93,16 @@ public class ListViewAdapter extends BaseAdapter {
         allTripList.clear();
         if(charText.length() == 0){
             allTripList.addAll(allTripArrayList);
+
         }
         else{
-            List<TripDetailModel> tripExpense = allTripArrayList.stream().filter(s->s.getTripName().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault()))).collect(Collectors.toList());
+            List<TripDetailModel> tripExpense = allTripArrayList.stream().filter(s->(s.getTripName().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault()))) ||
+                    (s.getDescription().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault()))) ||
+                    (s.getDestination().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault())))).collect(Collectors.toList());
             allTripList.addAll(tripExpense);
-            notifyDataSetChanged();
+
         }
+        notifyDataSetChanged();
     }
 
 }
