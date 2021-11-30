@@ -1,5 +1,9 @@
 package com.example.expensemanagementapplication;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ExpenseDetailModel {
     int expense_id;
     String expense_type;

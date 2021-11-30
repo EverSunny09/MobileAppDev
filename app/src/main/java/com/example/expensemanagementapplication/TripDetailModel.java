@@ -2,6 +2,7 @@ package com.example.expensemanagementapplication;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TripDetailModel {
     int id;
@@ -12,7 +13,7 @@ public class TripDetailModel {
     String endDate;
     int totalExpense;
     int totalCompesation;
-    ArrayList<ExpenseDetailModel> allExpenses;
+    List<ExpenseDetailModel> allExpenses;
 
     public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation,String description) {
         this.id = id;
@@ -25,11 +26,11 @@ public class TripDetailModel {
         this.description=description;
     }
 
-    public ArrayList<ExpenseDetailModel> getAllExpenses() {
+    public List<ExpenseDetailModel> getAllExpenses() {
         return allExpenses;
     }
 
-    public void setAllExpenses(ArrayList<ExpenseDetailModel> allExpenses) {
+    public void setAllExpenses(List<ExpenseDetailModel> allExpenses) {
         this.allExpenses = allExpenses;
     }
 

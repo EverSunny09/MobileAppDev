@@ -1,5 +1,6 @@
 package com.example.expensemanagementapplication;
 
+import androidx.annotation.IntegerRes;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,9 +26,13 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class AllTrips extends AppCompatActivity {
@@ -42,6 +47,7 @@ public class AllTrips extends AppCompatActivity {
     ArrayList<Integer> allTrips = new ArrayList<>();
     DataBaseExecution db = new DataBaseExecution(this);
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +57,8 @@ public class AllTrips extends AppCompatActivity {
         recycler1 = findViewById(R.id.recycler1);
         cardModel = new ArrayList<>();
 
-       // allTrips = getUserAllTrips(userId);
-        //createCardModelData(allTrips);
+        allTrips = getUserAllTrips(userId);
+        createCardModelData(allTrips);
 
         //cardModel.add(new TripCardModel(pieData1 = loadPieChartData(),p1,p2,t1));
        // cardModel.add(new TripCardModel(pieData2 = loadPieChartData()));
@@ -89,12 +95,13 @@ public class AllTrips extends AppCompatActivity {
         l.setEnabled(true);
     }
 
-    private PieData loadPieChartData(String expType,float expAmount){
+    private PieData loadPieChartData(List<ExpenseDetailModel> allExp){
 
         ArrayList<PieEntry> pieChartEntries = new ArrayList<>();
-        pieChartEntries.add(new PieEntry(expAmount,expType));
-        pieChartEntries.add(new PieEntry(0.5f,"Travel"));
-        pieChartEntries.add(new PieEntry(0.3f,"Accommodation"));
+
+        for(ExpenseDetailModel exp: allExp){
+            pieChartEntries.add(new PieEntry(exp.getExpense_amount(),exp.getExpense_type()));
+        }
 
         ArrayList<Integer>colors = new ArrayList<>();
         for (int color : ColorTemplate.MATERIAL_COLORS){
@@ -119,7 +126,7 @@ public class AllTrips extends AppCompatActivity {
         pieChart.animateY(1400, Easing.EaseInOutQuad);*/
         return pieData;
     }
-/*
+
     private ArrayList<Integer> getUserAllTrips(int userId){
         ArrayList<Integer> trips = new ArrayList<Integer>();
         Cursor allTripsData = db.getData("trip_id","trip","user_id",String.valueOf(userId));
@@ -131,6 +138,7 @@ public class AllTrips extends AppCompatActivity {
         return trips;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void createCardModelData(ArrayList<Integer> trips){
         if(!trips.isEmpty()){
 
@@ -139,7 +147,7 @@ public class AllTrips extends AppCompatActivity {
             ArrayList<ExpenseDetailModel> allExpenseDetails = getExpenseDetailsList(expenseResults);
             ArrayList<TripDetailModel> allTripDetails = getTripDetailsList(tripResults, allExpenseDetails);
             setCardModelData(allTripDetails);
-
+/*
             for(int eachTrip : trips){
                 Cursor expIdDb = db.getData("expense_id,expense_type,amount_of_expense","expense","trip_id",eachTrip);
                 expIdDb.moveToFirst();
@@ -168,13 +176,14 @@ public class AllTrips extends AppCompatActivity {
                 tripDetails.setText(tripHeader);
 
                 tripModels.add(new TripCardModel(tripChart,proComp,tripDetails));
-            }
+            }*/
         }
         else{
             raiseToast("No trips found!");
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private ArrayList<ExpenseDetailModel> getExpenseDetailsList(Cursor expenseResults) {
         ArrayList<ExpenseDetailModel> allExpenseList = new ArrayList<>();
 
@@ -196,19 +205,19 @@ public class AllTrips extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setCardModelData(ArrayList<TripDetailModel> allTripDetails) {
+
         ArrayList<TripCardModel> tripModels = new ArrayList<>();
 
         for(TripDetailModel trip : allTripDetails){
-            //List<Long> expAmts = trip.allExpenses.stream().map(ExpenseDetailModel::getExpense_amount).collect(Collectors.toList());
-            //List<ExpenseDetailModel> tripExpense = trip.allExpenses.stream().filter(s->s.getTrip_id() == trip.getId()).collect(Collectors.toList());
-            List<Integer> expAmts =
-            PieData tripChart = loadPieChartData(trip.allExpenses.map,expAmount);
 
-            float expAmount = trip.getTotalExpense()/expAmt ;
-            PieData tripChart = loadPieChartData(expType,expAmount);
+            PieData tripChart = loadPieChartData(trip.getAllExpenses());
 
-            //setprogre
-            tripModels.add(new TripCardModel(tripChart,proComp,tripDetails));
+            //float expAmount = trip.getTotalExpense()/expAmt ;
+            //PieData tripChart = loadPieChartData(expType,expAmount);
+
+            String tripDetails = "<b>" + trip.getTripName() + "</b> /r/n<i>" + trip.getStartDate() + "-" + trip.getEndDate() + "</i>";
+
+            tripModels.add(new TripCardModel(tripChart,trip.getTotalCompesation(),tripDetails));
         }
 
     }
@@ -218,6 +227,7 @@ public class AllTrips extends AppCompatActivity {
         alertText.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public ArrayList<TripDetailModel> getTripDetailsList(Cursor result, ArrayList<ExpenseDetailModel> allExpenses) {
         ArrayList<TripDetailModel> allTripsList = new ArrayList<>();
 
@@ -241,17 +251,15 @@ public class AllTrips extends AppCompatActivity {
         return allTripsList;
     }
 
-    private ArrayList<ExpenseDetailModel> setTripExpense(int tripId, ArrayList<ExpenseDetailModel> allExpenseDetails) {
-        ArrayList<ExpenseDetailModel> expenses = new ArrayList<ExpenseDetailModel>();
-        for(ExpenseDetailModel exp : allExpenseDetails){
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private List<ExpenseDetailModel> setTripExpense(int tripId, List<ExpenseDetailModel> allExpenseDetails) {
+        return allExpenseDetails.stream().filter(s->s.getTrip_id() == tripId).collect(Collectors.toList());
+        /*for(ExpenseDetailModel exp : allExpenseDetails){
             if(tripId==exp.getTrip_id()){
                 expenses.add(exp);
             }
         }
-        return expenses;
+        return expenses;*/
     }
 
-    public void setTripDetailsList(ArrayList<TripDetailModel> tripDetailsList) {
-        this.tripDetailsList = tripDetailsList;
-    }*/
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -74,9 +75,11 @@ public class SignUp1 extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void saveIntoDB(UserModel User){
         DataBaseExecution db = new DataBaseExecution(this);
-        boolean output = db.addNewUser(User);
-        if(output){
+        long userId = db.addNewUser(User);
+        if(userId!=-1){
             raiseToast("User added successfully. Please Login");
+
+            saveSession(new UserSession((int)userId,User.getFirstName()+" "+User.getLastName())); //user = new UserSession(userId,Name);
             moveToHomePage();
         }
 
@@ -167,6 +170,11 @@ public class SignUp1 extends AppCompatActivity {
         byte[] key = digest.digest();
         SecretKeySpec secretKeySpec = new SecretKeySpec(key,"AES");
         return secretKeySpec;
+    }
+
+    private void saveSession(UserSession user){
+        SessionManagement sessionManagement= new SessionManagement(SignUp1.this);
+        sessionManagement.saveSession(user);
     }
 
 }
