@@ -1,22 +1,19 @@
 package com.example.expensemanagementapplication;
 
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-
 public class ExpenseModel implements Parcelable {
 
-    private static int expenseId;
-    private static int tripId;
-    private static String typeOfExpense;
-    private static String Currency;
-    private static long expenseDateTime;
-    private static String comments;
-    private static float expenseAmount;
-    private static String otherType;
+    private int expenseId;
+    private int tripId;
+    private String typeOfExpense;
+    private String Currency;
+    private long expenseDateTime;
+    private String comments;
+    private float expenseAmount;
+    private String otherType;
 
 
     public ExpenseModel(){
@@ -34,6 +31,7 @@ public class ExpenseModel implements Parcelable {
         this.otherType = otherType;
     }
 
+
     protected ExpenseModel(Parcel in) {
         expenseId = in.readInt();
         tripId = in.readInt();
@@ -41,7 +39,7 @@ public class ExpenseModel implements Parcelable {
         Currency = in.readString();
         expenseDateTime = in.readLong();
         comments = in.readString();
-        expenseAmount = in.readInt();
+        expenseAmount = in.readFloat();
         otherType = in.readString();
     }
 
@@ -121,6 +119,7 @@ public class ExpenseModel implements Parcelable {
         this.otherType = otherType;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -128,5 +127,13 @@ public class ExpenseModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(expenseId);
+        dest.writeInt(tripId);
+        dest.writeString(typeOfExpense);
+        dest.writeString(Currency);
+        dest.writeLong(expenseDateTime);
+        dest.writeString(comments);
+        dest.writeFloat(expenseAmount);
+        dest.writeString(otherType);
     }
 }

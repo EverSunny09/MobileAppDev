@@ -1,8 +1,11 @@
 package com.example.expensemanagementapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -17,20 +20,11 @@ import java.util.HashMap;
 public class AddNewExpense2 extends AppCompatActivity {
 
     ExpenseModel expenseModel = new ExpenseModel();
-    public static final String expComm = "abc";
-    public static final String expAmt = "new expense";
-    public static final String expType = "food";
-    public static final String expCurr = "INR";
-    public static final String otherType ="others";
-    public long expDateTime;
     DatePicker inputDate;
+    Long time;
     TimePicker inputTime;
-    String excComm,expAmtt,expTypee,expCurrr,otherTypee;
 
-    HashMap<String, Integer> expTypes = new HashMap<String, Integer>();
-    HashMap<String, Integer> currTypes = new HashMap<String, Integer>();
-
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +34,7 @@ public class AddNewExpense2 extends AppCompatActivity {
     }
 
     private void getPreviousActivityValue() {
-        ExpenseModel expModel = getIntent().getParcelableExtra("expenseModel");
+        ExpenseModel expModel = getIntent().getParcelableExtra("model");
         expenseModel = expModel;
     }
 
@@ -67,10 +61,22 @@ public class AddNewExpense2 extends AppCompatActivity {
     }
 
     public void onSaveButtonClicked(View view){
-
+        boolean successfullyAddedTrip =  saveDataIntoDB();
+        if(!successfullyAddedTrip)
+            raiseToast("Please try again! ");
+        else{
+            moveToHomePage();
+        }
     }
 
-    private void selectDateTime(){
+    private void moveToHomePage(){
+        Intent homeScreen = new Intent(this, HomeScreen.class);
+        homeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(homeScreen);
+        raiseToast("Expense added Successfully! ");
+    }
+
+    public void setDateAndTime(){
         inputDate = (DatePicker) findViewById(R.id.date);
         inputTime = (TimePicker) findViewById(R.id.time);
 
@@ -80,7 +86,37 @@ public class AddNewExpense2 extends AppCompatActivity {
                 inputTime.getCurrentHour(),
                 inputTime.getCurrentMinute());
 
-        ///time = calendar.getTimeInMillis();
-       // alertDialog.dismiss();
+        time = calendar.getTimeInMillis();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void selectDateTime(){
+        setDateAndTime();
+        setDateChangeListener();
+        setTimeChangeListener();
+    }
+
+    private void setTimeChangeListener(){
+        inputTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                setDateAndTime();
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setDateChangeListener(){
+        inputDate.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                setDateAndTime();
+            }
+        });
+    }
+    private boolean saveDataIntoDB() {
+        expenseModel.setExpenseDateTime(time);
+        DataBaseExecution dataBaseExecution = new DataBaseExecution(this);
+        return dataBaseExecution.addNewExpense(expenseModel);
     }
 }

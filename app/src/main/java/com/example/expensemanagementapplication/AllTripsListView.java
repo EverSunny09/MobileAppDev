@@ -21,7 +21,6 @@ public class AllTripsListView extends AppCompatActivity {
     ListView listView;
     ListViewAdapter adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +32,7 @@ public class AllTripsListView extends AppCompatActivity {
         adapter = new ListViewAdapter(this, arrayList);
         listView.setAdapter(adapter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

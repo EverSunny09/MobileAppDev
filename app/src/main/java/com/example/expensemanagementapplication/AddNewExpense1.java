@@ -112,7 +112,7 @@ public class AddNewExpense1 extends AppCompatActivity {
 
     private void nextExpensePage(){
         Intent i = new Intent(AddNewExpense1.this,AddNewExpense2.class);
-        i.putExtra("expenseModel",expenseModel);
+        i.putExtra("model",expenseModel);
         startActivity(i);
     }
 

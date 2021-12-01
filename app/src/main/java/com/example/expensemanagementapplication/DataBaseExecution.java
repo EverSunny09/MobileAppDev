@@ -123,7 +123,6 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public boolean addNewExpense(ExpenseModel Expense){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Column_ExpenseId,Expense.getExpenseId());
         cv.put(Column_TripId,Expense.getTripId());
         cv.put(Column_TypeOfExpense,Expense.getTypeOfExpense());
         cv.put(Column_TimeOfExpense,Expense.getExpenseDateTime());
