@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class AddNewExpense2 extends AppCompatActivity {
@@ -19,7 +23,8 @@ public class AddNewExpense2 extends AppCompatActivity {
     public static final String expCurr = "INR";
     public static final String otherType ="others";
     public long expDateTime;
-
+    DatePicker inputDate;
+    TimePicker inputTime;
     String excComm,expAmtt,expTypee,expCurrr,otherTypee;
 
     HashMap<String, Integer> expTypes = new HashMap<String, Integer>();
@@ -66,6 +71,16 @@ public class AddNewExpense2 extends AppCompatActivity {
     }
 
     private void selectDateTime(){
-        //select expense date and time
+        inputDate = (DatePicker) findViewById(R.id.date);
+        inputTime = (TimePicker) findViewById(R.id.time);
+
+        Calendar calendar = new GregorianCalendar(inputDate.getYear(),
+                inputDate.getMonth(),
+                inputDate.getDayOfMonth(),
+                inputTime.getCurrentHour(),
+                inputTime.getCurrentMinute());
+
+        ///time = calendar.getTimeInMillis();
+       // alertDialog.dismiss();
     }
 }
