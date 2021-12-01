@@ -18,6 +18,7 @@
         app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="previousButtonClick"
         app:layout_constraintVertical_bias="0.897"
         app:srcCompat="@android:drawable/ic_menu_send"
         tools:ignore="MissingConstraints" />
@@ -26,7 +27,7 @@
         android:id="@+id/addExpenseButton"
         android:layout_width="76dp"
         android:layout_height="61dp"
-        android:onClick="addExp"
+        android:onClick="onSaveButtonClicked"
         android:text="Save"
         app:backgroundTint="#B545C8"
         app:cornerRadius="20dp"

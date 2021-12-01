@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 public class AddNewExpense2 extends AppCompatActivity {
 
+    ExpenseModel expenseModel = new ExpenseModel();
     public static final String expComm = "abc";
     public static final String expAmt = "new expense";
     public static final String expType = "food";
@@ -29,39 +30,13 @@ public class AddNewExpense2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_expense2);
-        getPreviousValues();
-        putExpTypes();
-        putcurrTypes();
+        getPreviousActivityValue();
         selectDateTime();
     }
 
-    public void getPreviousValues(){
-        Intent i = getIntent();
-        excComm = i.getStringExtra(expComm);
-        expAmtt = i.getStringExtra(expAmt);
-        expTypee = i.getStringExtra(expType);
-        expCurrr = i.getStringExtra(expCurr);
-        otherTypee = i.getStringExtra(otherType);
-    }
-
-    public void addExp(View view){
-        ExpenseModel expModel = new ExpenseModel(-1,1,expTypes.get(expType), currTypes.get(expCurr), expDateTime, expComm, Integer.parseInt(expAmt), otherType);
-        saveExpToDb(expModel);
-    }
-
-    private void putExpTypes(){
-        expTypes.put("Food",1);
-        expTypes.put("Accommodation",2);
-        expTypes.put("Travel",3);
-    }
-
-    private void putcurrTypes(){
-        currTypes.put("GBP",1);
-        currTypes.put("INR",2);
-        currTypes.put("EU",3);
-        currTypes.put("USD",4);
-        currTypes.put("CAD",5);
-        currTypes.put("AUD",6);
+    private void getPreviousActivityValue() {
+        ExpenseModel expModel = getIntent().getParcelableExtra("expenseModel");
+        expenseModel = expModel;
     }
 
     private void saveExpToDb(ExpenseModel expDBModel){
@@ -77,9 +52,17 @@ public class AddNewExpense2 extends AppCompatActivity {
         }
     }
 
+    public void previousButtonClick(View view){
+        finish();
+    }
+
     private void raiseToast(String toastMsg){
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
+    }
+
+    public void onSaveButtonClicked(View view){
+
     }
 
     private void selectDateTime(){
