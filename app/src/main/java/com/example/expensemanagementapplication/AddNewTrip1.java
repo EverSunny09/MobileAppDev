@@ -20,19 +20,46 @@ public class AddNewTrip1 extends AppCompatActivity {
     Spinner tripType ;
     TripModel tripModel = new TripModel();
     Boolean isOtherType;
+    String tripId;
     Boolean isEdit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_trip1);
+
         getValuesFromComponents();
         setSpinnerListener();
         checkIfIsEdit();
     }
 
     private void checkIfIsEdit(){
+        Intent i = getIntent();
+        tripId = i.getStringExtra("tripId");
+        if(tripId!=null){
+            DataBaseExecution db = new DataBaseExecution(this);
+            Cursor trip = db.getData("*","trip","trip_id",tripId);
+            trip.moveToNext();
+            tripModel.setTripId(trip.getInt(0));
+            tripModel.setTripName(trip.getString(2));
+            tripModel.setDestination(trip.getString(3));
+            tripModel.setTripStartDate(trip.getInt(4));
+            tripModel.setTripEndDate(trip.getInt(5));
+            tripModel.setRequireRiskAssessment(trip.getInt(6));
+            tripModel.setDescription(trip.getString(7));
+            tripModel.setIsActive(trip.getInt(8));
+            tripModel.setTypeOfTrip(trip.getString(9));
+            tripModel.setTotalCompensated(trip.getString(11));
+            tripModel.setTotalExpense(trip.getString(12));
+            tripModel.setIsInternationalTrip(trip.getInt(13));
+            convertIntoFieldValues(tripModel);
+        }
+    }
 
+    private void convertIntoFieldValues(TripModel tripModel){
+        tripName.setText(tripModel.getTripName());
+        tripDescription.setText(tripModel.getDescription());
+        tripType.setSelection(((ArrayAdapter)tripType.getAdapter()).getPosition(tripModel.getTypeOfTrip()));
     }
 
     private void setSpinnerListener() {

@@ -54,7 +54,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 5);
+        super(context, dbName, null, 6);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -65,7 +65,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         String createUserTable = "CREATE TABLE " + User_Table + " ( " + Column_UserId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_FirstName + " TEXT, " + Column_LastName + " TEXT, " + Column_Password + " TEXT, " + Column_Email+ " TEXT, " + Column_BaseCurrency + " INTEGER, " + Column_EmployeeId + " TEXT )";
                                  // CREATE TABLE USER_TABLE ( UserId int PRIMARY KEY AUTOINCREMENT, FirstName Text, LastName TEXT, Password TEXT, Email TEXT, BaseCurrency int, employeeId text )
 
-        String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " TEXT, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " NUMERIC, " + Column_TotalExpense + " NUMERIC, " + Column_IsInternationalTrip + " INTEGER );";
+        String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " TEXT, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " TEXT, " + Column_TotalExpense + " TEXT, " + Column_IsInternationalTrip + " INTEGER );";
 
         String createExpenseTable = "CREATE TABLE " + Expense_Table + " ( " + Column_ExpenseId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_TripId + " INTEGER, " + Column_TypeOfExpense + " INTEGER, " + Column_TimeOfExpense + " NUMERIC, " + Column_AmountOfExpense + " NUMERIC, " + Column_Comments + " TEXT, " + Column_Currency + " INTEGER, " + Column_OtherType +" TEXT );";
 
@@ -165,7 +165,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
     public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
         String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation FROM trip"
-                + " WHERE user_id IN (" + makePlaceholders(tripIds.size()) + ")";
+                + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;
     }
@@ -175,6 +175,16 @@ public class DataBaseExecution extends SQLiteOpenHelper {
                 + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;
+    }
+
+    public boolean deleteTrip(String tripId){
+        deleteExpense(tripId);
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(Trip_Table, Column_TripId + "=" + tripId, null) > 0;
+    }
+    public boolean deleteExpense(String tripId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(Expense_Table, Column_TripId + "=" + tripId, null) > 0;
     }
 
     String[] getStringFromInt(ArrayList<Integer> Ids){
@@ -200,5 +210,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return sb.toString();
         }
     }
+
+
 
 }

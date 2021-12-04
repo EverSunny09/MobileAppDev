@@ -111,7 +111,7 @@ public class AllTrips extends AppCompatActivity {
             colors.add(color);
         }
 
-        PieDataSet pieDataSet = new PieDataSet(pieChartEntries,"Trip Monthly Expense");
+        PieDataSet pieDataSet = new PieDataSet(pieChartEntries,"Trip Expense");
         pieDataSet.setColors(colors);
 
         PieData pieData = new PieData(pieDataSet);

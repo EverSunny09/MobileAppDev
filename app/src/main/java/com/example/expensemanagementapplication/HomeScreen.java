@@ -42,6 +42,7 @@ public class HomeScreen extends AppCompatActivity {
 
     public void moveToAllTrips(View view){
         Intent allTrips = new Intent(this, AllTripsListView.class);
+        allTrips.putExtra("fromHomeScreen", true);
         startActivity(allTrips);
     }
 

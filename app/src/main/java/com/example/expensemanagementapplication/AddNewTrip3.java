@@ -101,7 +101,7 @@ public class AddNewTrip3 extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onDiscardButtonClicked(View view){
-        moveToHomeScreen();
+        finish();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

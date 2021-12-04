@@ -1,11 +1,15 @@
 package com.example.expensemanagementapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -53,6 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
+        ImageView edit,delete;
         ViewTripDetails details;
         if(view == null){
             details = new ViewTripDetails();
@@ -62,6 +67,40 @@ public class ListViewAdapter extends BaseAdapter {
             details.mDescription = view.findViewById(R.id.description);
             details.mStartDate = view.findViewById(R.id.startDate);
             details.mEndDate = view.findViewById(R.id.endDate);
+            edit = view.findViewById(R.id.editButton);
+            delete = view.findViewById(R.id.deleteDelete);
+
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(v.getContext(),AddNewTrip1.class);
+                    i.putExtra("tripId",String.valueOf(allTripList.get(position).getId()));
+                    mContext.startActivity(i);
+                }
+            });
+
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(mContext)
+                            .setTitle("Do you want to delete"+ allTripList.get(position).getTripName() + "trip ?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DataBaseExecution db = new DataBaseExecution(mContext);
+                                    db.deleteTrip(String.valueOf(allTripList.get(position).getId()));
+                                    allTripList.remove(position);
+                                    notifyDataSetChanged();
+
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create().show();
+                }
+            });
 
             view.setTag(details);
         }
@@ -80,7 +119,7 @@ public class ListViewAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int tripId = allTripList.get(position).getId();
             }
         });
 

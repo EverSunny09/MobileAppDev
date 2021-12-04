@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,20 +20,38 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.ArrayList;
+
 public class AddNewExpense1 extends AppCompatActivity {
 
     EditText expenseComments, expenseAmount, otherType;
-    Spinner expenseType, expenseCurrency;
+    Spinner expenseType, expenseCurrency,trip;
     ExpenseModel expenseModel = new ExpenseModel();
     Boolean isOtherType;
-
+    TripNameValue selectedTrip ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_expense1);
         getValuesFromComponents();
+        setData();
         setSpinnerListener();
 
+    }
+
+    private void setTripListener(){
+        trip.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TripNameValue item = (TripNameValue) parent.getSelectedItem();
+                expenseModel.setTripId(Integer.parseInt(item.getId()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void setExpenseCurrencyListener(){
@@ -72,6 +91,7 @@ public class AddNewExpense1 extends AppCompatActivity {
     private void setSpinnerListener() {
         setExpenseTypeListener();
         setExpenseCurrencyListener();
+        setTripListener();
     }
 
     private void getValuesFromComponents() {
@@ -79,6 +99,7 @@ public class AddNewExpense1 extends AppCompatActivity {
         otherType = (EditText) findViewById(R.id.otherType);
         expenseAmount = (EditText) findViewById(R.id.expenseAmount);
         expenseType = (Spinner) findViewById(R.id.expenseTypeSpinner);
+        trip =  (Spinner) findViewById(R.id.tripSpinner);
         expenseCurrency = (Spinner) findViewById(R.id.expenseCurrencySpinner);
         otherType = (EditText)findViewById(R.id.otherType);
         expenseModel.setCurrency("GBP");
@@ -156,4 +177,34 @@ public class AddNewExpense1 extends AppCompatActivity {
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
     }
+
+    private void setData() {
+        DataBaseExecution db = new DataBaseExecution(this);
+        Cursor allTripNameValue = db.getData("trip_id,trip_name","trip","user_id",String.valueOf(getUserId()));
+        ArrayAdapter<TripNameValue> adapter = new ArrayAdapter<TripNameValue>(AddNewExpense1.this, android.R.layout.simple_spinner_dropdown_item, getTripDetails(allTripNameValue));
+        trip.setAdapter(adapter);
+    }
+
+    public int getUserId(){
+        SessionManagement sessionManagement=new SessionManagement(AddNewExpense1.this);
+        return sessionManagement.getSession();
+    }
+
+    public ArrayList<TripNameValue> getTripDetails(Cursor allTripNameValue){
+        ArrayList<TripNameValue> allTripList = new ArrayList<>();
+
+        allTripNameValue.moveToFirst();
+        while(!allTripNameValue.isAfterLast()){
+            TripNameValue trip = new TripNameValue();
+
+            trip.setId(allTripNameValue.getString(0));
+            trip.setTripName(allTripNameValue.getString(1));
+            allTripList.add(trip);
+
+            allTripNameValue.moveToNext();
+        }
+        expenseModel.setTripId(Integer.parseInt(allTripList.get(0).getId()));
+        return allTripList;
+    }
+
 }

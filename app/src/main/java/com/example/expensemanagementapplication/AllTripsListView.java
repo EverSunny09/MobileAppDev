@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,14 +26,24 @@ public class AllTripsListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_trips_list_view);
+        setListView();
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(AllTripsListView.this,HomeScreen.class);
+        startActivity(i);
+    }
+
+    private void setListView(){
         listView = findViewById(R.id.allTripsListView);
         ArrayList<TripDetailModel> arrayList = new ArrayList<>();
         arrayList.addAll(getAllTrips());
         adapter = new ListViewAdapter(this, arrayList);
         listView.setAdapter(adapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

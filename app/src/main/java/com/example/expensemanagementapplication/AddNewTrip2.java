@@ -21,11 +21,12 @@ public class AddNewTrip2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_trip2);
 
-        getPreviousActivityValue();
+
         getValuesFromComponents();
         setDefaultValues();
         setIsInternationCheckListener();
         setRequiredAssessCheckListener();
+        getPreviousActivityValue();
 
     }
 
@@ -38,6 +39,13 @@ public class AddNewTrip2 extends AppCompatActivity {
     private void getPreviousActivityValue() {
         TripModel trpModel = getIntent().getParcelableExtra("tripmodel");
         tripModel = trpModel;
+        if(tripModel.getTripId()!=0){
+            destination.setText(tripModel.getDestination());
+            if(tripModel.getIsInternationalTrip() == 1)
+                isInternational.setChecked(true);
+            if (tripModel.getRequireRiskAssessment() == 1)
+                requiredAsses.setChecked(true);
+        }
     }
 
     private void setDefaultValues() {
