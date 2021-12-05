@@ -43,8 +43,8 @@ public class AddNewTrip1 extends AppCompatActivity {
             tripModel.setTripId(trip.getInt(0));
             tripModel.setTripName(trip.getString(2));
             tripModel.setDestination(trip.getString(3));
-            tripModel.setTripStartDate(trip.getInt(4));
-            tripModel.setTripEndDate(trip.getInt(5));
+            tripModel.setTripStartDate(trip.getLong(4));
+            tripModel.setTripEndDate(trip.getLong(5));
             tripModel.setRequireRiskAssessment(trip.getInt(6));
             tripModel.setDescription(trip.getString(7));
             tripModel.setIsActive(trip.getInt(8));

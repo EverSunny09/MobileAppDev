@@ -6,10 +6,12 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +25,8 @@ public class AddNewTrip3 extends AppCompatActivity {
 
     TextView startDateText,endDateText,tripName,tripDesc,tripType,tripDest,tripIsInternational,tripRiskAssessmentNeeded;
     TripModel tripModel = new TripModel();
-
+    Button saveButton;
+    String tripId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,10 @@ public class AddNewTrip3 extends AppCompatActivity {
         getValuesFromComponents();
         setDatePickerControl();
 
+    }
+
+    private boolean checkIfIsEdit(){
+        return tripModel.getTripId()!=0;
     }
 
     private void getValuesFromComponents() {
@@ -43,6 +50,7 @@ public class AddNewTrip3 extends AppCompatActivity {
         tripRiskAssessmentNeeded= findViewById(R.id.isRiskAssessmentRequired);
         startDateText = findViewById(R.id.startDateText);
         endDateText = findViewById(R.id.endDateText);
+        saveButton = findViewById(R.id.saveButton);
     }
 
     private void getPreviousActivityValue() {
@@ -50,8 +58,32 @@ public class AddNewTrip3 extends AppCompatActivity {
         tripModel = trpModel;
     }
 
-    private void setDatePickerControl(){
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.dateRangePicker();
+    private void setDate(){
+        MaterialDatePicker datePicker = MaterialDatePicker.Builder.dateRangePicker().
+                setSelection(androidx.core.util.Pair.create(tripModel.getTripStartDate(),tripModel.getTripEndDate())).build();
+        datePicker.show(getSupportFragmentManager(),"Material_Range");
+        datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Object selection) {
+                String selectedDate = selection.toString();
+                androidx.core.util.Pair selectedDates = (androidx.core.util.Pair) datePicker.getSelection();
+                final Pair<Date, Date> rangeDate = new Pair<>(new Date((Long) selectedDates.first), new Date((Long) selectedDates.second));
+                Date startDate = rangeDate.first;
+                Date endDate = rangeDate.second;
+                SimpleDateFormat simpleFormat = new SimpleDateFormat("dd MMM yyyy");
+                startDateText.setText("Start Date: " + simpleFormat.format(startDate));
+                endDateText.setText("Start Date: " + simpleFormat.format(endDate));
+                setTripValues((Long) selectedDates.first,(Long) selectedDates.second);
+            }
+        });
+        datePicker.addOnNegativeButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        /*MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.dateRangePicker();
         final MaterialDatePicker materialDatePicker = builder.build();
         materialDatePicker.show(getSupportFragmentManager(), materialDatePicker.toString());
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
@@ -73,7 +105,39 @@ public class AddNewTrip3 extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
+    }
+
+    private void setDatePickerControl(){
+        boolean isEdit = checkIfIsEdit();
+        if(isEdit){
+            setDate();
+        }
+        else{
+            MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.dateRangePicker();
+            final MaterialDatePicker materialDatePicker = builder.build();
+            materialDatePicker.show(getSupportFragmentManager(), materialDatePicker.toString());
+            materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClick(Object selection) {
+                    androidx.core.util.Pair selectedDates = (androidx.core.util.Pair) materialDatePicker.getSelection();
+                    final Pair<Date, Date> rangeDate = new Pair<>(new Date((Long) selectedDates.first), new Date((Long) selectedDates.second));
+                    Date startDate = rangeDate.first;
+                    Date endDate = rangeDate.second;
+                    SimpleDateFormat simpleFormat = new SimpleDateFormat("dd MMM yyyy");
+                    startDateText.setText("Start Date: " + simpleFormat.format(startDate));
+                    endDateText.setText("Start Date: " + simpleFormat.format(endDate));
+                    setTripValues((Long) selectedDates.first,(Long) selectedDates.second);
+                }
+            });
+            materialDatePicker.addOnNegativeButtonClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
+
     }
 
     private void setTripValues(Long startDate,Long endDate){
@@ -87,6 +151,9 @@ public class AddNewTrip3 extends AppCompatActivity {
         tripModel.setTripEndDate(endDate);
         tripModel.setUserId(getLoggedInUserId());
         tripModel.setIsActive(1);
+        if(tripModel.getTripId()!= 0)
+            saveButton.setText("Update");
+
     }
 
     private int getLoggedInUserId() {
@@ -113,21 +180,40 @@ public class AddNewTrip3 extends AppCompatActivity {
         raiseToast("Trip added Successfully! ");
     }
 
-    private void moveToAllTrips(){
+    private void moveToAllTrips(boolean isEdit){
         Intent allTrips = new Intent(this, AllTripsListView.class);
         startActivity(allTrips);
-        raiseToast("Trip added Successfully! ");
+        String value = isEdit ? "updated" : "added";
+        raiseToast("Trip "+ value +" Successfully! ");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onSaveButtonClicked(View view){
+        if(tripModel.getTripId() != 0){
+            updateRecord();
+        }
+        else{
+            saveNewRecord();
+        }
+    }
+
+    private void updateRecord(){
+        DataBaseExecution dataBaseExecution = new DataBaseExecution(this);
+        if(!dataBaseExecution.updateTrip(tripModel)){
+            raiseToast("Please try again! ");
+        }
+        else{
+            moveToAllTrips(true);
+        }
+    }
+
+    private void saveNewRecord(){
         boolean successfullyAddedTrip =  saveDataIntoDB();
         if(!successfullyAddedTrip)
             raiseToast("Please try again! ");
         else{
-            moveToAllTrips();
+            moveToAllTrips(false);
         }
-
     }
 
     private boolean saveDataIntoDB() {

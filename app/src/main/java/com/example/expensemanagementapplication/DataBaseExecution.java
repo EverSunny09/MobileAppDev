@@ -163,6 +163,28 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean updateTrip(TripModel Trip){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Column_UserId,Trip.getUserId());
+        cv.put(Column_TripName,Trip.getTripName());
+        cv.put(Column_Destination,Trip.getDestination());
+        cv.put(Column_TripStartDate,Trip.getTripStartDate());
+        cv.put(Column_TripEndDate,Trip.getTripEndDate());
+        cv.put(Column_RequireRiskAssess,Trip.getRequireRiskAssessment());
+        cv.put(Column_OtherType,Trip.getOtherType());
+        cv.put(Column_Desc,Trip.getDescription());
+        cv.put(Column_IsActive,Trip.getIsActive());
+        cv.put(Column_TypeOfTrip,Trip.getTypeOfTrip());
+        cv.put(Column_TotalCompensated,Trip.getTotalCompensated());
+        cv.put(Column_TotalExpense,Trip.getTotalExpense());
+        cv.put(Column_IsInternationalTrip,Trip.getIsInternationalTrip());
+
+        int rows = db.update(Trip_Table, cv, "trip_id = ?", new String[]{ String.valueOf(Trip.getTripId())});
+        return rows > 0;
+    }
+
+
     public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
         String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation FROM trip"
                 + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
