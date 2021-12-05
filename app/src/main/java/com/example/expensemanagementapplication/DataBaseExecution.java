@@ -20,6 +20,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     private static final String User_Table = "user";
     private static final String Trip_Table="trip";
     private static final String Expense_Table="expense";
+    private static final String Exchange_Detail_Table = "exchange_detail";
 
     //Columns
     private static final String Column_UserId = "user_id";
@@ -51,10 +52,15 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     private static final String Column_Comments = "comments";
     private static final String Column_Currency = "currency";
 
+    private static final String Column_ExchangeId="exchange_id";
+    private static final String Column_Type="type"; //inbound or outbound
+    private static final String Column_Data="data";
+
+
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 6);
+        super(context, dbName, null, 7);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -69,10 +75,13 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
         String createExpenseTable = "CREATE TABLE " + Expense_Table + " ( " + Column_ExpenseId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_TripId + " INTEGER, " + Column_TypeOfExpense + " INTEGER, " + Column_TimeOfExpense + " NUMERIC, " + Column_AmountOfExpense + " NUMERIC, " + Column_Comments + " TEXT, " + Column_Currency + " INTEGER, " + Column_OtherType +" TEXT );";
 
+        String createExchangeDetailTable = "CREATE TABLE "+Exchange_Detail_Table + " ( " +Column_ExchangeId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " INTEGER, "+ Column_Type + " TEXT, "+ Column_Data + "TEXT);";
+
 
         db.execSQL(createUserTable);
         db.execSQL(createTripTable);
         db.execSQL(createExpenseTable);
+        db.execSQL(createExchangeDetailTable);
     }
 
     @Override
@@ -80,6 +89,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+User_Table);
         db.execSQL("DROP TABLE IF EXISTS "+Trip_Table);
         db.execSQL("DROP TABLE IF EXISTS "+Expense_Table);
+        db.execSQL("DROP TABLE IF EXISTS "+Exchange_Detail_Table);
         onCreate(db);
     }
 

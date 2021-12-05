@@ -126,7 +126,7 @@ public class AddNewTrip3 extends AppCompatActivity {
                     Date endDate = rangeDate.second;
                     SimpleDateFormat simpleFormat = new SimpleDateFormat("dd MMM yyyy");
                     startDateText.setText("Start Date: " + simpleFormat.format(startDate));
-                    endDateText.setText("Start Date: " + simpleFormat.format(endDate));
+                    endDateText.setText("End Date: " + simpleFormat.format(endDate));
                     setTripValues((Long) selectedDates.first,(Long) selectedDates.second);
                 }
             });

@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        else {
+            raiseToast("Please Enter Valid Credentials!");
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
