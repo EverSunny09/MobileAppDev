@@ -10,6 +10,7 @@
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip1.xml" value="0.264" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip2.xml" value="0.264" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_add_new_trip3.xml" value="0.264" />
+        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_all_expenses.xml" value="0.22916666666666666" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_all_trips_list.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_all_trips_list_view.xml" value="0.2" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_home_screen.xml" value="0.264" />
@@ -17,6 +18,8 @@
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_sign_up.xml" value="0.1721014492753623" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_sign_up1.xml" value="0.25" />
+        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/all_expenses_card_view.xml" value="0.22916666666666666" />
+        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/all_trips_card_view.xml" value="0.22916666666666666" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/row.xml" value="0.4" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/menu/menu.xml" value="0.4" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_add_new_expense2.xml" value="0.2957427536231884" />

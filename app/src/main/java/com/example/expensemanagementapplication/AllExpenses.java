@@ -13,7 +13,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AllExpenses extends AppCompatActivity {
 
@@ -63,13 +66,19 @@ public class AllExpenses extends AppCompatActivity {
     private void setCardModelData(ArrayList<ExpenseDetailModel> allExpDetails) {
         for(ExpenseDetailModel exp : allExpDetails){
             String type = exp.getExpense_type();
-            String time = exp.getTime_of_expense();
+            String time = getDateTimeFormat(Long.parseLong(exp.getTime_of_expense()));
             String com = exp.getComments();
             String amt = Integer.toString(exp.getExpense_amount());
             cardModel.add(new ExpenseCardModel(type, time, amt, com));
             totalExp+= Integer.parseInt(amt);
         }
 
+    }
+
+    private String getDateTimeFormat(Long DateTime){
+        Date date = new Date(DateTime);
+        Format format = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
+        return format.format(date);
     }
 
     private ArrayList<ExpenseDetailModel> getExpenseDetailsList(Cursor expenseResults) {
