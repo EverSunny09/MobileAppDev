@@ -120,6 +120,10 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 int tripId = allTripList.get(position).getId();
+
+                Intent allExp = new Intent(mContext, AllExpenses.class);
+                allExp.putExtra(AllExpenses.tripIdString,Integer. toString(tripId));
+                mContext.startActivity(allExp);
             }
         });
 

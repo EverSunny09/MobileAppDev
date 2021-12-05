@@ -27,9 +27,7 @@ public class AllTripsListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_trips_list_view);
         setListView();
-
     }
-
 
     @Override
     public void onBackPressed() {
