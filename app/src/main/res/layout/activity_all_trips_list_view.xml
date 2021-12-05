@@ -6,26 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AllTripsListView">
-  <!--  <RelativeLayout
+
+    <RelativeLayout
+        android:id="@+id/header_title"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:id="@+id/header_title">
+        android:layout_height="150dp">
 
         <EditText
-            android:id="@+id/search_bar"
+            android:id="@+id/searchByType"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_height="80dp"
             android:ems="20"
-            android:hint="Type to Search"
-            android:minHeight="48dp" />
+            android:hint="Search Trip Name" />
 
-    </RelativeLayout>-->
+        <EditText
+            android:id="@+id/searchByDestination"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:ems="20"
+            android:layout_below="@+id/searchByType"
+            android:hint="Search Trip Destination" />
+
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/allTripsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></ListView>
+        android:layout_below="@+id/header_title"></ListView>
     <!--android:layout_below="@+id/header_title"-->
 </RelativeLayout>

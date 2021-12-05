@@ -144,4 +144,34 @@ public class ListViewAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void filterByName(String charText){
+        allTripList.clear();
+        if(charText.length() == 0){
+            allTripList.addAll(allTripArrayList);
+
+        }
+        else{
+            List<TripDetailModel> tripExpense = allTripArrayList.stream().filter(s->(s.getTripName().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault())))).collect(Collectors.toList());
+            allTripList.addAll(tripExpense);
+
+        }
+        notifyDataSetChanged();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void filterByDestination(String charText){
+        allTripList.clear();
+        if(charText.length() == 0){
+            allTripList.addAll(allTripArrayList);
+
+        }
+        else{
+            List<TripDetailModel> tripExpense = allTripArrayList.stream().filter(s->(s.getDestination().toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault())))).collect(Collectors.toList());
+            allTripList.addAll(tripExpense);
+
+        }
+        notifyDataSetChanged();
+    }
+
 }
