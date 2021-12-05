@@ -1,10 +1,11 @@
 package com.example.expensemanagementapplication;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,9 +34,15 @@ public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<ExpenseRecy
     @Override
     public void onBindViewHolder(@NonNull ExpenseRecyclerViewAdapter.ViewHolder holder, int position) {
         ExpenseCardModel model = cardModel.get(position);
-        holder.image.setImageResource(R.drawable.food);
-        holder.text.setText(model.getText());
+        holder.expType.setText(model.getExpType());
+        holder.expTime.setText(model.getExpTime());
+        holder.expAmt.setText(model.getExpAmt());
+        holder.expCom.setText(model.getExpCom());
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),android.R.anim.slide_in_left);
+        holder.itemView.startAnimation(animation);
     }
+
 
     @Override
     public int getItemCount() {return cardModel.size();
@@ -43,12 +50,14 @@ public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<ExpenseRecy
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
-        TextView text;
+        TextView expType, expAmt, expTime, expCom;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.imageView);
-            text = itemView.findViewById(R.id.textViewExp);
+            expType = itemView.findViewById(R.id.expType);
+            expAmt = itemView.findViewById(R.id.expAmt);
+            expTime = itemView.findViewById(R.id.expTime);
+            expCom = itemView.findViewById(R.id.expCom);
         }
     }
 

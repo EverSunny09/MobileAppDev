@@ -1,36 +1,52 @@
 package com.example.expensemanagementapplication;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class ExpenseCardModel {
-    ImageView image;
-    String text;
+    String expType;
+    String expTime;
+    String expCom;
+    String expAmt;
 
-    public ExpenseCardModel(String text) {
-        //this.image = image;
-        this.text = text;
-        setImage(text);
+    public ExpenseCardModel(String expType, String expTime, String expAmt, String expCom) {
+        this.expType = expType;
+        this.expTime = expTime;
+        this.expCom = expCom;
+        this.expAmt = expAmt;
     }
 
-    public ImageView getImage() { return image; }
+    public String getExpType() {
+        return expType;
+    }
 
-    public void setImage(ImageView image) { this.image = image; }
+    public void setExpType(String expType) {
+        this.expType = expType;
+    }
 
-    public String getText() { return text; }
+    public String getExpTime() {
+        return expTime;
+    }
 
-    public void setText(String text) { this.text = text; }
+    public void setExpTime(String expTime) {
+        this.expTime = expTime;
+    }
 
-    private void setImage(String text){
-        switch (text){
-            case "Food":
-                //do food image;
-                break;
-            case "Accommodation":
-                break;
-            case "Travel":
-                break;
-        }
+    public String getExpCom() {
+        return expCom;
+    }
+
+    public void setExpCom(String expCom) {
+        this.expCom = expCom;
+    }
+
+    public String getExpAmt() {
+        return expAmt;
+    }
+
+    public void setExpAmt(String expAmt) {
+        this.expAmt = expAmt;
     }
 }

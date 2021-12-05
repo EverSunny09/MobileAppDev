@@ -1,31 +1,45 @@
 package com.example.expensemanagementapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class AllExpenses extends AppCompatActivity {
 
-    public static final String tripIdString = "m";
-    private int tripId;
+    public static final String tripIdString = "";
+    public int tripId;
+    private int totalExp=0;
     ArrayList<ExpenseCardModel> cardModel = new ArrayList<>();
-    ArrayList<Integer> allExpenseId = new ArrayList<>();
     RecyclerView recycler;
+    TextView totalExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_expenses);
 
-        tripId = Integer.parseInt(tripIdString);
+        //tripId = Integer.parseInt(tripIdString);
+        Intent i = getIntent();
+        String t = i.getStringExtra(tripIdString);
+        tripId = Integer.parseInt(t);
+
+        totalExpense = findViewById(R.id.totalExp);
         createCardModelData(tripId);
 
+        totalExpense.setText("Total: "+Integer.toString(totalExp));
+
+        recycler = findViewById(R.id.expRecycler);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycler.setLayoutManager(manager);
@@ -49,7 +63,11 @@ public class AllExpenses extends AppCompatActivity {
     private void setCardModelData(ArrayList<ExpenseDetailModel> allExpDetails) {
         for(ExpenseDetailModel exp : allExpDetails){
             String type = exp.getExpense_type();
-            cardModel.add(new ExpenseCardModel(type));
+            String time = exp.getTime_of_expense();
+            String com = exp.getComments();
+            String amt = Integer.toString(exp.getExpense_amount());
+            cardModel.add(new ExpenseCardModel(type, time, amt, com));
+            totalExp+= Integer.parseInt(amt);
         }
 
     }
