@@ -78,7 +78,6 @@ public class AllTripsListView extends AppCompatActivity {
         });
     }
 
-
     @Override
     public void onBackPressed() {
         Intent i = new Intent(AllTripsListView.this,HomeScreen.class);

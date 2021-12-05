@@ -27,6 +27,7 @@ public class ListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
     List<TripDetailModel> allTripList;
     ArrayList<TripDetailModel> allTripArrayList;
+    String trip;
 
     public ListViewAdapter(Context context, List<TripDetailModel> allTripList) {
         mContext = context;
@@ -120,6 +121,10 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 int tripId = allTripList.get(position).getId();
+                trip = Integer.toString(tripId);
+                Intent allExp = new Intent(mContext, AllExpenses.class);
+                allExp.putExtra(AllExpenses.tripIdString,trip);
+                mContext.startActivity(allExp);
             }
         });
 

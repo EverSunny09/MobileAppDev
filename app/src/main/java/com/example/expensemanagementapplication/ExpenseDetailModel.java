@@ -9,12 +9,38 @@ public class ExpenseDetailModel {
     String expense_type;
     int expense_amount;
     int trip_id;
+    String comments;
+    String time_of_expense;
 
     public ExpenseDetailModel(int expense_id, String expense_type, int expense_amount, int trip_id) {
         this.expense_id = expense_id;
         this.expense_type = expense_type;
         this.expense_amount = expense_amount;
         this.trip_id = trip_id;
+    }
+
+    public ExpenseDetailModel(int expense_id, String expense_type, int expense_amount, String comments, String time_of_expense) {
+        this.expense_id = expense_id;
+        this.expense_type = expense_type;
+        this.expense_amount = expense_amount;
+        this.comments = comments;
+        this.time_of_expense = time_of_expense;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getTime_of_expense() {
+        return time_of_expense;
+    }
+
+    public void setTime_of_expense(String time_of_expense) {
+        this.time_of_expense = time_of_expense;
     }
 
     public ExpenseDetailModel() {
