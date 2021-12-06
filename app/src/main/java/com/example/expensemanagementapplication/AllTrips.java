@@ -18,7 +18,10 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,9 +63,6 @@ public class AllTrips extends AppCompatActivity {
         }
 
         ArrayList<Integer>colors = new ArrayList<>();
-        for (int color : ColorTemplate.MATERIAL_COLORS){
-            colors.add(color);
-        }
         for (int color : ColorTemplate.PASTEL_COLORS){
             colors.add(color);
         }
@@ -143,7 +143,7 @@ public class AllTrips extends AppCompatActivity {
             String tripName = trip.getTripName();
             String tripDesc = trip.getDescription();
             String tripDest = trip.getDestination();
-            String tripDate = trip.getStartDate() +" - "+ trip.getEndDate();
+            String tripDate = getDateTimeFormat(Long.parseLong(trip.getStartDate())) +" - "+ getDateTimeFormat(Long.parseLong(trip.getEndDate()));;
             int isInt = trip.getInt();
             int isRisk = trip.getRisk();
 
@@ -196,16 +196,16 @@ public class AllTrips extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private List<ExpenseDetailModel> setTripExpense(int tripId, List<ExpenseDetailModel> allExpenseDetails) {
         return allExpenseDetails.stream().filter(s->s.getTrip_id() == tripId).collect(Collectors.toList());
-        /*for(ExpenseDetailModel exp : allExpenseDetails){
-            if(tripId==exp.getTrip_id()){
-                expenses.add(exp);
-            }
-        }
-        return expenses;*/
     }
 
     public int getUserId(){
         SessionManagement sessionManagement=new SessionManagement(AllTrips.this);
         return sessionManagement.getSession();
+    }
+
+    private String getDateTimeFormat(Long DateTime){
+        Date date = new Date(DateTime);
+        Format format = new SimpleDateFormat("dd MMM yyyy");
+        return format.format(date);
     }
 }
