@@ -22,24 +22,25 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753">
+        app:layout_constraintVertical_bias="0.684">
 
     </com.github.mikephil.charting.charts.PieChart>
 
     <TextView
         android:id="@+id/tripNameText"
-        android:layout_width="357dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_width="384dp"
+        android:layout_height="35dp"
         android:background="#CDDC39"
         android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tripDateText"
+        app:layout_constraintBottom_toTopOf="@+id/tripDestText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.747" />
 
     <TextView
         android:id="@+id/tripDescText"
@@ -50,24 +51,25 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/isIntText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tripDateText"
-        android:layout_width="111dp"
-        android:layout_height="29dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:background="#CDDC39"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/pieChart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706" />
+        app:layout_constraintVertical_bias="0.893" />
 
     <TextView
         android:id="@+id/isIntText"
@@ -121,17 +123,18 @@
 
     <TextView
         android:id="@+id/tripDestText"
-        android:layout_width="194dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:background="#CDDC39"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/tripDateText"
-        app:layout_constraintEnd_toStartOf="@+id/tripDateText"
-        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintBottom_toTopOf="@+id/tripDateText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tripDateText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918" />
 
     <!--
                 <ProgressBar
