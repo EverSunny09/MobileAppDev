@@ -27,23 +27,23 @@
 
             <Button
                 android:id="@+id/allTrips"
-                android:layout_width="wrap_content"
-                android:layout_height="58dp"
+                android:layout_width="120dp"
+                android:layout_height="103dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="210dp"
-                android:layout_marginLeft="210dp"
-                android:layout_marginTop="34dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginRight="26dp"
-                android:layout_marginBottom="127dp"
+                android:layout_marginStart="222dp"
+                android:layout_marginLeft="222dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="112dp"
                 android:onClick="showAllTrips"
                 android:text="All Trips"
-                app:backgroundTint="#BFB064D8" />
+                app:backgroundTint="#FFEB3B" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -62,8 +62,7 @@
                 android:layout_marginRight="217dp"
                 android:layout_marginBottom="74dp"
                 android:layout_weight="1"
-                android:shadowColor="@color/teal_700"
-                android:text="TEXT VIEW 1" />
+                android:shadowColor="@color/teal_700" />
 
         </RelativeLayout>
 
@@ -193,7 +192,7 @@
             android:id="@+id/toolbar"
             android:layout_width="405dp"
             android:layout_height="270dp"
-            android:background="@color/purple_200"
+            android:background="@android:color/holo_green_light"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -201,11 +200,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/userNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/artifika"
             android:text="Hi User !"
             android:textColor="#FFEB3B"
+            android:textSize="20sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -242,7 +243,7 @@
                 android:layout_toLeftOf="@+id/button3"
                 android:onClick="addNewTrip"
                 android:text="Start Trip"
-                app:backgroundTint="#BFB064D8" />
+                app:backgroundTint="#CDDC39" />
 
             <Button
                 android:id="@+id/button2"
@@ -258,7 +259,7 @@
                 android:layout_marginBottom="28dp"
                 android:onClick="addNewExpense"
                 android:text="Add New Expense"
-                app:backgroundTint="#BFB064D8" />
+                app:backgroundTint="#CDDC39" />
 
             <Button
                 android:id="@+id/button3"
@@ -274,7 +275,7 @@
                 android:layout_toLeftOf="@+id/button2"
                 android:onClick="moveToAllTrips"
                 android:text="Search Trip"
-                app:backgroundTint="#BFB064D8" />
+                app:backgroundTint="#FFEB3B" />
 
         </RelativeLayout>
 
@@ -283,9 +284,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
+            android:background="#FFEB3B"
             android:onClick="logOut"
             android:text="LogOut"
-            app:backgroundTint="#E3E2DA"
+            app:backgroundTint="#6BFFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.899"

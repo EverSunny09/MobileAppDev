@@ -16,6 +16,7 @@
             android:id="@+id/searchByType"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
+            android:background="#CBDA3F"
             android:ems="20"
             android:hint="Search Trip Name" />
 
@@ -23,17 +24,19 @@
             android:id="@+id/searchByDestination"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:ems="20"
             android:layout_below="@+id/searchByType"
+            android:background="#DCEC44"
+            android:ems="20"
             android:hint="Search Trip Destination" />
 
 
     </RelativeLayout>
 
-  <ListView
-      android:id="@+id/allTripsListView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_below="@+id/header_title"></ListView>
+    <ListView
+        android:id="@+id/allTripsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_title"
+        android:background="#F1FB89"></ListView>
     <!--android:layout_below="@+id/header_title"-->
 </RelativeLayout>

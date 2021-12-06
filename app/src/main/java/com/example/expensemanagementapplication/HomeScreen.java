@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeScreen extends AppCompatActivity {
 
     public static final String user = "name";
+    TextView loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,10 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         DataBaseExecution db = new DataBaseExecution(this);
 
+        Intent i = getIntent();
+        String userName = i.getStringExtra(user);
+        loggedInUser = findViewById(R.id.userNameText);
+        loggedInUser.setText("Hi, "+userName);
         //db.getAllTripsDetails();
 
     }
