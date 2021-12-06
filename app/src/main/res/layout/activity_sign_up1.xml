@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:onClick="signInButtonClick"
         android:text="Sign In"
+        app:backgroundTint="#CDDC39"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

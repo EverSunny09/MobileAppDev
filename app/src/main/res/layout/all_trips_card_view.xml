@@ -17,40 +17,121 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/totalCompBar"
+        app:layout_constraintBottom_toTopOf="@+id/tripDescText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.369">
+        app:layout_constraintVertical_bias="0.753">
 
     </com.github.mikephil.charting.charts.PieChart>
 
     <TextView
-        android:id="@+id/tripDetailView"
-        android:layout_width="361dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="32dp"
-        android:background="#D5CDDC39"
-        android:text="TextView"
+        android:id="@+id/tripNameText"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#CDDC39"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tripDateText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947" />
+
+    <TextView
+        android:id="@+id/tripDescText"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="cursive"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/isIntText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tripDateText"
+        android:layout_width="111dp"
+        android:layout_height="29dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/pieChart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.706" />
 
-    <ProgressBar
-        android:id="@+id/totalCompBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="320dp"
-        android:layout_height="44dp"
-        android:background="#3CD1DC39"
+    <TextView
+        android:id="@+id/isIntText"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="International"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/isRiskText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <TextView
+        android:id="@+id/isRiskText"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Risk Assessment"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
+        app:layout_constraintVertical_bias="0.952" />
+
+    <Switch
+        android:id="@+id/isIntSwitch"
+        android:layout_width="54dp"
+        android:layout_height="33dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/isIntText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/isIntText"
+        app:layout_constraintTop_toTopOf="@+id/isIntText" />
+
+    <Switch
+        android:id="@+id/isRiskSwitch"
+        android:layout_width="62dp"
+        android:layout_height="29dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/isRiskText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toEndOf="@+id/isRiskText"
+        app:layout_constraintTop_toTopOf="@+id/isRiskText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tripDestText"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/tripDateText"
+        app:layout_constraintEnd_toStartOf="@+id/tripDateText"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tripDateText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!--
                 <ProgressBar

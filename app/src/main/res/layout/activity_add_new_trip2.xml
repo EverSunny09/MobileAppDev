@@ -44,6 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="nextButtonClick"
+        app:backgroundTint="#C6D627"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.653"
@@ -51,7 +53,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.731"
         app:srcCompat="@android:drawable/ic_menu_send"
-        android:onClick="nextButtonClick"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -59,14 +60,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="previousButtonClick"
         android:rotationY="-180"
+        app:backgroundTint="#CDDC39"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.731"
-        android:onClick="previousButtonClick"
         app:srcCompat="@android:drawable/ic_menu_send"
         tools:ignore="MissingConstraints" />
 

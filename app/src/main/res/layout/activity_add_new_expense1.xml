@@ -13,6 +13,7 @@
         android:clickable="true"
         android:onClick="nextButtonClick"
         android:rotationY="-360"
+        app:backgroundTint="#CDDC39"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

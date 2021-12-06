@@ -46,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
         SessionManagement sessionManagement=new SessionManagement(MainActivity.this);
         int userId = sessionManagement.getSession();
         if(userId!=-1){
-            moveToHomeScreen(String.valueOf(userId),false);
+            DataBaseExecution db = new DataBaseExecution(this);
+
+            Cursor userName = db.getData("first_name","user","user_id",Integer.toString(userId));
+            userName.moveToFirst();
+            String user = userName.getString(0);
+            moveToHomeScreen(user,false);
         }
     }
 
@@ -69,7 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
                     if(validPwd){
                         saveSession();
-                        moveToHomeScreen(email,true);
+                        DataBaseExecution dataBase = new DataBaseExecution(MainActivity.this);
+                        Cursor userName = dataBase.getData("first_name","user","email",email);
+                        userName.moveToFirst();
+                        String user = userName.getString(0);
+                        moveToHomeScreen(user,true);
                     }
                     else{
                         raiseToast("Incorrect Password !");

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,18 +30,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         PieChart pieChart;
-        ProgressBar p1;
-        TextView header;
+        //ProgressBar p1;
+        TextView tripName,tripDest,tripDesc,tripDate;
+        Switch isInt,isRisk;
 
         public void setUpPieChart(){
             pieChart.setDrawHoleEnabled(true);
             pieChart.setUsePercentValues(true);
             pieChart.setEntryLabelTextSize(12);
             pieChart.setEntryLabelTextSize(Color.BLACK);
-            pieChart.setCenterText("Expense for Jan Month");
+            pieChart.setCenterText("Expenses Ration");
             pieChart.setCenterTextSize(24);
             pieChart.getDescription().setEnabled(false);
-            pieChart.animateY(3000, Easing.EaseInElastic);
+            pieChart.animateY(5000, Easing.EaseOutExpo);
 
             Legend l = pieChart.getLegend();
             l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -54,8 +56,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             pieChart = itemView.findViewById(R.id.pieChart);
             setUpPieChart();
-            p1 = itemView.findViewById(R.id.totalCompBar);
-            header = itemView.findViewById(R.id.tripDetailView);
+            //p1 = itemView.findViewById(R.id.totalCompBar);
+            //header = itemView.findViewById(R.id.tripNameText);
+            tripName = itemView.findViewById(R.id.tripNameText);
+            tripDest = itemView.findViewById(R.id.tripDestText);
+            tripDesc = itemView.findViewById(R.id.tripDescText);
+            tripDate = itemView.findViewById(R.id.tripDateText);
+            isInt = itemView.findViewById(R.id.isIntSwitch);
+            isRisk = itemView.findViewById(R.id.isRiskSwitch);
         }
     }
 
@@ -70,13 +78,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TripCardModel model = cardModel.get(position);
         holder.pieChart.setData(model.getPieChart());
-        holder.p1.setProgress(model.getProgress1());
-        holder.header.setText(model.getTextView());
+       // holder.p1.setProgress(model.getProgress1());
+       // holder.header.setText(model.getTextView());
+        holder.tripName.setText(model.getTripName());
+        holder.tripDest.setText(model.getTripDest());
+        holder.tripDesc.setText(model.getTripDesc());
+        holder.tripDate.setText(model.getTripDate());
+        holder.isInt.setChecked(model.getIsInt());
+        holder.isRisk.setChecked(model.getIsRisk());
     }
-
     @Override
     public int getItemCount() {
         return cardModel.size();
     }
-
 }
