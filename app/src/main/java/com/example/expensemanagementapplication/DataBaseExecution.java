@@ -196,7 +196,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
 
     public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
-        String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation FROM trip"
+        String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation, is_international_trip, require_risk_assessment FROM trip"
                 + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;

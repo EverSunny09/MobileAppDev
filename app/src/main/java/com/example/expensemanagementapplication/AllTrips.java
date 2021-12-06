@@ -136,15 +136,26 @@ public class AllTrips extends AppCompatActivity {
         //ArrayList<TripCardModel> tripModels = new ArrayList<>();
 
         for(TripDetailModel trip : allTripDetails){
+            Boolean isInternational=false;
+            Boolean isRiskAssessment=false;
 
             PieData tripChart = loadPieChartData(trip.getAllExpenses());
+            String tripName = trip.getTripName();
+            String tripDesc = trip.getDescription();
+            String tripDest = trip.getDestination();
+            String tripDate = trip.getStartDate() +" - "+ trip.getEndDate();
+            int isInt = trip.getInt();
+            int isRisk = trip.getRisk();
 
-            //float expAmount = trip.getTotalExpense()/expAmt ;
-            //PieData tripChart = loadPieChartData(expType,expAmount);
+            if(isInt==1){
+                isInternational=true;
+            }
+            if (isRisk==1){
+                isRiskAssessment=true;
+            }
 
-            String tripDetails = "<b>" + trip.getTripName() + "</b> /r/n<i>" + trip.getStartDate() + "-" + trip.getEndDate() + "</i>";
-
-            cardModel.add(new TripCardModel(tripChart,trip.getTotalCompesation(),tripDetails));
+            cardModel.add(new TripCardModel(tripChart,tripName,tripDesc,tripDate,tripDest,isInternational,isRiskAssessment));
+           // cardModel.add(new TripCardModel(tripChart,trip.getTotalCompesation(),tripDetails));
         }
 
     }
@@ -169,6 +180,10 @@ public class AllTrips extends AppCompatActivity {
             trip.setEndDate(result.getString(4));
             trip.setTotalExpense(result.getInt(5));
             trip.setTotalCompesation(result.getInt(6));
+            trip.setDescription(result.getString(7));
+            trip.setInt(result.getInt(8));
+            trip.setRisk(result.getInt(9));
+
             trip.setAllExpenses(setTripExpense(result.getInt(0), allExpenses));
 
             allTripsList.add(trip);

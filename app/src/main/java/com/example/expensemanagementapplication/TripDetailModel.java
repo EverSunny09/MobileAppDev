@@ -14,8 +14,9 @@ public class TripDetailModel {
     int totalExpense;
     int totalCompesation;
     List<ExpenseDetailModel> allExpenses;
+    int isInt, isRisk;
 
-    public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation,String description) {
+    public TripDetailModel(int id, String tripName, String destination, String startDate, String endDate, int totalExpense, int totalCompesation,String description, int isInt, int isRisk) {
         this.id = id;
         this.tripName = tripName;
         this.destination = destination;
@@ -24,6 +25,8 @@ public class TripDetailModel {
         this.totalExpense = totalExpense;
         this.totalCompesation = totalCompesation;
         this.description=description;
+        this.isInt=isInt;
+        this.isRisk=isRisk;
     }
 
     public List<ExpenseDetailModel> getAllExpenses() {
@@ -99,5 +102,21 @@ public class TripDetailModel {
 
     public void setTotalCompesation(int totalCompesation) {
         this.totalCompesation = totalCompesation;
+    }
+
+    public int getInt() {
+        return isInt;
+    }
+
+    public void setInt(int anInt) {
+        isInt = anInt;
+    }
+
+    public int getRisk() {
+        return isRisk;
+    }
+
+    public void setRisk(int risk) {
+        isRisk = risk;
     }
 }
