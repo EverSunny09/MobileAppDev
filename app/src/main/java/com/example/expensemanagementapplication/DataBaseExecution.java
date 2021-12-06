@@ -60,7 +60,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 7);
+        super(context, dbName, null, 8);
         ExpenseManagementDB= getWritableDatabase();
 
     }
