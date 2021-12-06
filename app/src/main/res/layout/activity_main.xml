@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_background">>
 
     <TextView
         android:id="@+id/or"
@@ -56,12 +57,14 @@
         android:layout_height="wrap_content"
         android:onClick="logInButtonClick"
         android:text="@string/logIn"
+        android:textColor="#090909"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.121"
+        app:strokeColor="#020000"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -70,6 +73,7 @@
         android:layout_height="wrap_content"
         android:onClick="signupButtonClick"
         android:text="@string/signUp"
+        android:textColor="#0B0A0A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -83,11 +87,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/notAUser"
+        android:textColor="#040303"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/or"
         app:layout_constraintVertical_bias="0.124"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="131dp"
+        android:layout_height="92dp"
+        app:srcCompat="@drawable/logooo"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

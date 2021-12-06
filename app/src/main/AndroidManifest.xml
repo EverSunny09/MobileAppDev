@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.expensemanagementapplication">
+    package="com.example.expensemanagementapplication" >
 
     <application
         android:allowBackup="true"
@@ -8,12 +8,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExpenseManagementApplication">
-        <activity android:name=".HomeScreen"></activity>
+        android:theme="@style/Theme.ExpenseManagementApplication" >
+        <activity
+            android:name=".Intro__page"
+            android:exported="false" />
+        <activity
+            android:name=".Intro_page"
+            android:exported="false" />
+        <activity
+            android:name=".NewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Signup_activity"
+            android:exported="false" />
+        <activity android:name=".HomeScreen" />
         <activity android:name=".SignUp1" />
         <activity android:name=".SignUp" />
         <activity android:name=".LogIn" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

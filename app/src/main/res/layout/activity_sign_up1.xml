@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp1">
+    tools:context=".SignUp1"
+    android:background="@drawable/gradient_background"> >
 
     <EditText
         android:id="@+id/emailOrPhone"
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:onClick="signInButtonClick"
         android:text="Sign In"
+        android:textColor="#090909"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -65,5 +67,13 @@
         app:layout_constraintTop_toBottomOf="@+id/confirmPwdSignUp"
         app:layout_constraintVertical_bias="0.381"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="167dp"
+        android:layout_height="129dp"
+        app:srcCompat="@drawable/logooo"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

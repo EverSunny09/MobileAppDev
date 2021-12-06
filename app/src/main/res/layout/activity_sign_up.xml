@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".SignUp"
+    android:background="@drawable/gradient_background">
+
+
 
     <EditText
+        android:background="lo"
         android:id="@+id/firstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,6 +58,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+
         android:id="@+id/employeeId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,6 +72,15 @@
         app:layout_constraintTop_toBottomOf="@+id/lastName"
         app:layout_constraintVertical_bias="0.126"
         tools:ignore="MissingConstraints"
-        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .-"/>
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .-"
+        />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="134dp"
+        android:layout_height="124dp"
+        app:srcCompat="@drawable/logooo"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
