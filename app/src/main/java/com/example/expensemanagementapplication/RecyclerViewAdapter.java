@@ -39,7 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             pieChart.setUsePercentValues(true);
             pieChart.setEntryLabelTextSize(12);
             pieChart.setEntryLabelTextSize(Color.BLACK);
-            pieChart.setCenterText("Expenses Ration");
+            pieChart.setCenterText("Expenses Ratio");
             pieChart.setCenterTextSize(24);
             pieChart.getDescription().setEnabled(false);
             pieChart.animateY(5000, Easing.EaseOutExpo);
