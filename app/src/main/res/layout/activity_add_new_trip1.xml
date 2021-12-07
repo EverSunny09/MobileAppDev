@@ -4,31 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F7F6"
     tools:context=".AddNewTrip1">
 
     <EditText
         android:id="@+id/tripName"
-        android:layout_width="165dp"
+        android:layout_width="354dp"
         android:layout_height="53dp"
         android:hint="Trip Name"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tripDesc"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintVertical_bias="0.726" />
 
     <EditText
         android:id="@+id/tripDesc"
-        android:layout_width="167dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_width="350dp"
+        android:layout_height="54dp"
         android:hint="Trip Description"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tripType"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.811" />
 
     <EditText
         android:id="@+id/otherType"
@@ -48,7 +50,7 @@
         android:clickable="true"
         android:onClick="nextButtonClick"
         android:rotationY="-360"
-        app:backgroundTint="#CDDC39"
+        app:backgroundTint="#FE6E2F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -60,15 +62,15 @@
 
     <Spinner
         android:id="@+id/tripType"
-        android:layout_width="167dp"
-        android:layout_height="49dp"
+        android:layout_width="352dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="72dp"
         android:entries="@array/tripTypes"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintVertical_bias="0.934" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

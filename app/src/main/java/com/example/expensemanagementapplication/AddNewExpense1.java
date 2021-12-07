@@ -152,8 +152,14 @@ public class AddNewExpense1 extends AppCompatActivity {
     private void setData() {
         DataBaseExecution db = new DataBaseExecution(this);
         Cursor allTripNameValue = db.getData("trip_id,trip_name","trip","user_id",String.valueOf(getUserId()));
-        ArrayAdapter<TripNameValue> adapter = new ArrayAdapter<TripNameValue>(AddNewExpense1.this, android.R.layout.simple_spinner_dropdown_item, getTripDetails(allTripNameValue));
-        trip.setAdapter(adapter);
+        if(allTripNameValue.getCount()>0){
+            ArrayAdapter<TripNameValue> adapter = new ArrayAdapter<TripNameValue>(AddNewExpense1.this, android.R.layout.simple_spinner_dropdown_item, getTripDetails(allTripNameValue));
+            trip.setAdapter(adapter);
+        }
+        else{
+            raiseToast("No trips found!");
+            finish();
+        }
     }
 
     public int getUserId(){

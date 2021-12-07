@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#28CAE85D">
+    android:background="#FFFDD1">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
@@ -30,8 +30,8 @@
         android:id="@+id/tripNameText"
         android:layout_width="384dp"
         android:layout_height="35dp"
-        android:background="#CDDC39"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:background="#FE6E2F"
+        android:fontFamily="@font/artifika"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -47,7 +47,7 @@
         android:layout_width="338dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
-        android:fontFamily="cursive"
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/isIntText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
         android:id="@+id/tripDateText"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
-        android:background="#CDDC39"
+        android:background="#FE6E2F"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"
         android:textStyle="bold|italic"
@@ -125,7 +125,7 @@
         android:id="@+id/tripDestText"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
-        android:background="#CDDC39"
+        android:background="#FE6E2F"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20sp"
         android:textStyle="italic"

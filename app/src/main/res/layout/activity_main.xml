@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/OR"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,11 +23,12 @@
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
         android:ems="10"
         android:hint="@string/enterEmailOrPhoneNo"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -37,11 +39,12 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
         android:ems="10"
         android:hint="@string/enterPassword"
         android:inputType="textPassword"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -56,13 +59,14 @@
         android:layout_height="wrap_content"
         android:onClick="logInButtonClick"
         android:text="@string/logIn"
-        app:backgroundTint="#CDDC39"
+        android:textSize="20sp"
+        app:backgroundTint="#FE6E2F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.121"
+        app:layout_constraintVertical_bias="0.183"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -71,7 +75,8 @@
         android:layout_height="wrap_content"
         android:onClick="signupButtonClick"
         android:text="@string/signUp"
-        app:backgroundTint="#8BC34A"
+        android:textSize="20sp"
+        app:backgroundTint="#fe6e2f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -85,11 +90,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/notAUser"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/or"
-        app:layout_constraintVertical_bias="0.124"
+        app:layout_constraintVertical_bias="0.155"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

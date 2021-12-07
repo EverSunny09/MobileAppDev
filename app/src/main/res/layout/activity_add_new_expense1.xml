@@ -13,7 +13,7 @@
         android:clickable="true"
         android:onClick="nextButtonClick"
         android:rotationY="-360"
-        app:backgroundTint="#CDDC39"
+        app:backgroundTint="#FE6E2F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -25,66 +25,66 @@
 
     <EditText
         android:id="@+id/expenseComments"
-        android:layout_width="228dp"
-        android:layout_height="52dp"
+        android:layout_width="391dp"
+        android:layout_height="53dp"
         android:hint="Comments"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <Spinner
         android:id="@+id/expenseCurrencySpinner"
-        android:layout_width="88dp"
-        android:layout_height="45dp"
+        android:layout_width="133dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="64dp"
         android:entries="@array/expenseCurrency"
         app:layout_constraintBottom_toTopOf="@+id/expenseComments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.721"
+        app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/expenseAmount"
-        android:layout_width="127dp"
-        android:layout_height="45dp"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="64dp"
         android:hint="Amount"
+        android:inputType="number"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/expenseComments"
         app:layout_constraintEnd_toStartOf="@+id/expenseCurrencySpinner"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:inputType="number"
         app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/tripSpinner"
-        android:layout_width="224dp"
-        android:layout_height="54dp"
+        android:layout_width="338dp"
+        android:layout_height="62dp"
         android:entries="@array/expenseTypes"
         app:layout_constraintBottom_toTopOf="@+id/expenseTypeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.674" />
 
     <Spinner
         android:id="@+id/expenseTypeSpinner"
-        android:layout_width="224dp"
-        android:layout_height="54dp"
+        android:layout_width="355dp"
+        android:layout_height="62dp"
         android:entries="@array/expenseTypes"
         app:layout_constraintBottom_toTopOf="@+id/expenseAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.797" />
 
     <EditText
         android:id="@+id/otherType"
