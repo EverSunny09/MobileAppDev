@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFEF2"
     tools:context=".SignUp">
 
     <EditText
@@ -12,6 +13,7 @@
         android:layout_height="72dp"
         android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="First Name"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -29,6 +31,7 @@
         android:layout_height="62dp"
         android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Last Name"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -62,6 +65,7 @@
         android:layout_height="66dp"
         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .-"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Employee ID"
         android:inputType="textPersonName"
         android:textSize="20sp"

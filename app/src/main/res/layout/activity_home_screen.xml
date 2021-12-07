@@ -5,14 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1"
-    >
+    android:layout_weight="1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
-        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         tools:context=".HomeScreen">
 
         <RelativeLayout
@@ -23,6 +22,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
             android:animateLayoutChanges="true"
+            android:background="#FFFEF2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
@@ -43,6 +43,7 @@
                 android:layout_marginBottom="38dp"
                 android:layout_toStartOf="@+id/button2"
                 android:layout_toLeftOf="@+id/button2"
+                android:fontFamily="sans-serif-smallcaps"
                 android:onClick="moveToJsonUpload"
                 android:text="Upload Trips"
                 android:textSize="20sp"
@@ -60,6 +61,7 @@
                 android:layout_marginEnd="9dp"
                 android:layout_marginRight="9dp"
                 android:layout_marginBottom="33dp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:onClick="addNewExpense"
                 android:text="Add New Expense"
                 android:textSize="20sp"
@@ -71,7 +73,7 @@
             android:id="@+id/toolbar"
             android:layout_width="405dp"
             android:layout_height="270dp"
-            android:background="@color/white"
+            android:background="@drawable/gradient_background"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,6 +102,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
+            android:background="#FFFEF2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
@@ -119,6 +122,7 @@
                 android:layout_marginBottom="22dp"
                 android:layout_toStartOf="@+id/button3"
                 android:layout_toLeftOf="@+id/button3"
+                android:fontFamily="sans-serif-smallcaps"
                 android:onClick="addNewTrip"
                 android:text="Start Trip"
                 android:textSize="20sp"
@@ -136,6 +140,7 @@
                 android:layout_marginBottom="23dp"
                 android:layout_toStartOf="@+id/allTrips"
                 android:layout_toLeftOf="@+id/allTrips"
+                android:fontFamily="sans-serif-smallcaps"
                 android:onClick="moveToAllTrips"
                 android:text="Search Trip"
                 android:textSize="20sp"
@@ -153,6 +158,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
                 android:layout_marginBottom="23dp"
+                android:fontFamily="sans-serif-smallcaps"
                 android:onClick="showAllTrips"
                 android:text="All Trips"
                 android:textSize="20sp"
@@ -166,10 +172,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:background="#FFFEF2"
+            android:fontFamily="sans-serif-smallcaps"
             android:onClick="logOut"
             android:text="LogOut"
-            android:textSize="20sp"
             android:textColor="@color/orangeButton"
+            android:textSize="20sp"
             app:backgroundTint="#FFFEF2"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"

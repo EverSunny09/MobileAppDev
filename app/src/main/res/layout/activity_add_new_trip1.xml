@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7F6"
+    android:background="#FFFEF2"
     tools:context=".AddNewTrip1">
 
     <EditText
         android:id="@+id/tripName"
         android:layout_width="354dp"
         android:layout_height="53dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Trip Name"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tripDesc"
@@ -24,6 +25,7 @@
         android:id="@+id/tripDesc"
         android:layout_width="350dp"
         android:layout_height="54dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Trip Description"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tripType"

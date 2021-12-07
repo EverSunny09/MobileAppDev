@@ -16,7 +16,7 @@
             android:id="@+id/searchByType"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:background="#FFFEF9"
+            android:background="#FFFEF2"
             android:ems="20"
             android:hint="Search Trip Name" />
 
@@ -37,6 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/header_title"
-        android:background="#F6F6F4"></ListView>
+        android:background="@drawable/gradient_background"></ListView>
     <!--android:layout_below="@+id/header_title"-->
 </RelativeLayout>

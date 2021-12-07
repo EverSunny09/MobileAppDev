@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFEF2"
     tools:context=".SignUp1">
 
     <EditText
@@ -11,6 +12,7 @@
         android:layout_width="366dp"
         android:layout_height="65dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/enterEmailOrPhoneNo"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -28,6 +30,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Enter Password"
         android:inputType="textPassword"
         android:textSize="20sp"
@@ -44,6 +47,7 @@
         android:layout_width="358dp"
         android:layout_height="62dp"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:textSize="20sp"

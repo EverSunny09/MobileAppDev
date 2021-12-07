@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDD1">
+    android:background="#FFFEF2">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
@@ -30,7 +30,7 @@
         android:id="@+id/tripNameText"
         android:layout_width="384dp"
         android:layout_height="35dp"
-        android:background="#FE6E2F"
+        android:background="@drawable/gradient_background"
         android:fontFamily="@font/artifika"
         android:gravity="center_horizontal"
         android:textAlignment="center"
