@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagementApplication">
         <activity
+            android:name=".UploadDataToCloud"
+            android:exported="false" />
+        <activity
             android:name=".AllExpenses"
             android:exported="false" />
         <activity

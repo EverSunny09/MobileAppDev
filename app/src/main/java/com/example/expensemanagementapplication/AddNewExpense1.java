@@ -142,35 +142,6 @@ public class AddNewExpense1 extends AppCompatActivity {
         if(isValid){
             nextExpensePage();
         }
-        /*expType= expenseType.getSelectedItem().toString();
-        expCurr = expenseCurrency.getSelectedItem().toString();
-        expComm = expenseComments.getText().toString();
-        expAmt = expenseAmount.getText().toString();
-        expOtherType = otherType.getText().toString();
-
-        if(expAmt.isEmpty()){
-            raiseToast("Please enter the Amount of Expense");
-        }
-
-        if(expType.isEmpty()){
-            raiseToast("Please choose the Type of Expense");
-        }
-
-        if(expCurr.isEmpty()){
-            raiseToast("Please choose the Currency of Expense");
-        }
-
-        else{
-            Intent addExpenseNextPage = new Intent(AddNewExpense1.this, AddNewExpense2.class);
-            addExpenseNextPage.putExtra(AddNewExpense2.expComm,expComm);
-            addExpenseNextPage.putExtra(AddNewExpense2.expAmt,expAmt);
-            addExpenseNextPage.putExtra(AddNewExpense2.expType,expType);
-            addExpenseNextPage.putExtra(AddNewExpense2.expCurr,expCurr);
-            if(!expOtherType.isEmpty()){
-                addExpenseNextPage.putExtra(AddNewExpense2.otherType,expOtherType);
-            }
-            startActivity(addExpenseNextPage);
-        }*/
     }
 
     private void raiseToast(String toastMsg){

@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -178,11 +181,4 @@ public class MainActivity extends AppCompatActivity {
         setUser(results.getString(1)+" "+results.getString(2),results.getInt(0));
         return results.getString(3);
     }
-
-    private UserSession getSessionDetails(Cursor results){
-        results.moveToNext();
-        UserSession user = new UserSession(results.getInt(0),results.getString(1)+ " "+results.getString(2));
-        return user;
-    }
-
 }

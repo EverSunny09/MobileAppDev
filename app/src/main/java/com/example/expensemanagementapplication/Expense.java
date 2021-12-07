@@ -1,27 +1,27 @@
 package com.example.expensemanagementapplication;
 
 public class Expense {
-    private String name;
+    private int trip_id;
     private String type;
     private String amt;
     private String dateTime;
 
-    public Expense(String name, String type, String amt, String dateTime) {
-        this.name = name;
+    public Expense(String type, String amt, String dateTime,int trip_id) {
         this.type = type;
         this.amt = amt;
         this.dateTime = dateTime;
+        this.trip_id=trip_id;
+    }
+
+    public int getTrip_id() {
+        return trip_id;
+    }
+
+    public void setTrip_id(int trip_id) {
+        this.trip_id = trip_id;
     }
 
     public Expense() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getType() {

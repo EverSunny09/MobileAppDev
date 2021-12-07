@@ -60,7 +60,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
     public SQLiteDatabase ExpenseManagementDB ;
 
     public DataBaseExecution(Context context) {
-        super(context, dbName, null, 8);
+        super(context, dbName, null, 9);
         ExpenseManagementDB= getWritableDatabase();
 
     }
@@ -73,7 +73,7 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
         String createTripTable = "CREATE TABLE " + Trip_Table + " ( " + Column_TripId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " TEXT, " + Column_TripName + " TEXT, " + Column_Destination + " TEXT, " + Column_TripStartDate + " NUMERIC, " + Column_TripEndDate + " NUMERIC, " + Column_RequireRiskAssess + " INTEGER, " + Column_Desc + " TEXT, " + Column_IsActive + " INTEGER, " + Column_TypeOfTrip + " TEXT, " + Column_OtherType + " TEXT, " + Column_TotalCompensated + " TEXT, " + Column_TotalExpense + " TEXT, " + Column_IsInternationalTrip + " INTEGER );";
 
-        String createExpenseTable = "CREATE TABLE " + Expense_Table + " ( " + Column_ExpenseId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_TripId + " INTEGER, " + Column_TypeOfExpense + " INTEGER, " + Column_TimeOfExpense + " NUMERIC, " + Column_AmountOfExpense + " NUMERIC, " + Column_Comments + " TEXT, " + Column_Currency + " INTEGER, " + Column_OtherType +" TEXT );";
+        String createExpenseTable = "CREATE TABLE " + Expense_Table + " ( " + Column_ExpenseId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_TripId + " INTEGER, " + Column_TypeOfExpense + " TEXT, " + Column_TimeOfExpense + " NUMERIC, " + Column_AmountOfExpense + " NUMERIC, " + Column_Comments + " TEXT, " + Column_Currency + " TEXT, " + Column_OtherType +" TEXT );";
 
         String createExchangeDetailTable = "CREATE TABLE "+Exchange_Detail_Table + " ( " +Column_ExchangeId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Column_UserId + " INTEGER, "+ Column_Type + " TEXT, "+ Column_Data + "TEXT);";
 
@@ -196,7 +196,14 @@ public class DataBaseExecution extends SQLiteOpenHelper {
 
 
     public Cursor getAllTripsDetails(ArrayList<Integer> tripIds){
-        String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation, description, is_international_trip, require_risk_assessment FROM trip"
+        String query = "SELECT trip_id, trip_name, destination, trip_start_date, trip_end_date, total_expense, total_compensation, description, is_international_trip, require_risk_assessment,type_of_trip FROM trip"
+                + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
+        Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
+        return cursor;
+    }
+
+    public Cursor getExpenseDetails(ArrayList<Integer> tripIds){
+        String query = "SELECT * FROM expense"
                 + " WHERE trip_id IN (" + makePlaceholders(tripIds.size()) + ")";
         Cursor cursor = ExpenseManagementDB.rawQuery(query, getStringFromInt(tripIds));
         return cursor;

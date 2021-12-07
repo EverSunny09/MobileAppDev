@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -72,4 +77,11 @@ public class HomeScreen extends AppCompatActivity {
         Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
         alertText.show();
     }
+
+    public void moveToJsonUpload(View view){
+        Intent i = new Intent(this,UploadDataToCloud.class);
+        startActivity(i);
+    }
+
+
 }

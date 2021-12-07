@@ -1,6 +1,7 @@
 package com.example.expensemanagementapplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TripClass {
     private String name;
@@ -11,9 +12,9 @@ public class TripClass {
     private String riskAssess;
     private String description;
     private String type;
-    ArrayList<Expense> expenseList;
+    List<Expense> expenseList;
 
-    public TripClass(String name, String totalAmt, String destination, String startDate, String endDate, String riskAssess, String description, String type, ArrayList<Expense> expenseList) {
+    public TripClass(String name, String totalAmt, String destination, String startDate, String endDate, String riskAssess, String description, String type, List<Expense> expenseList) {
         this.name = name;
         this.totalAmt = totalAmt;
         this.destination = destination;
@@ -92,11 +93,11 @@ public class TripClass {
         this.type = type;
     }
 
-    public ArrayList<Expense> getExpenseList() {
+    public List<Expense> getExpenseList() {
         return expenseList;
     }
 
-    public void setExpenseList(ArrayList<Expense> expenseList) {
+    public void setExpenseList(List<Expense> expenseList) {
         this.expenseList = expenseList;
     }
 }

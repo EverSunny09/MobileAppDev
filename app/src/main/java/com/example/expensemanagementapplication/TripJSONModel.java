@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class TripJSONModel {
     private String userId;
-    ArrayList<DetailList> detailList;
+    DetailList detailList;
 
-    public TripJSONModel(String userId, ArrayList<DetailList> detailList) {
+    public TripJSONModel(String userId, DetailList detailList) {
         this.userId = userId;
         this.detailList = detailList;
     }
@@ -22,11 +22,11 @@ public class TripJSONModel {
         this.userId = userId;
     }
 
-    public ArrayList<DetailList> getDetailList() {
+    public DetailList getDetailList() {
         return detailList;
     }
 
-    public void setDetailList(ArrayList<DetailList> detailList) {
+    public void setDetailList(DetailList detailList) {
         this.detailList = detailList;
     }
 }
