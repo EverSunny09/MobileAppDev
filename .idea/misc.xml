@@ -29,9 +29,12 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1359375" />
         <entry key="app/src/main/res/drawable/ic_view_list.xml" value="0.1359375" />
         <entry key="app/src/main/res/drawable/shapecircle_orange.xml" value="0.121875" />
+        <entry key="app/src/main/res/layout/activity_add_new_trip1.xml" value="0.10885416666666667" />
+        <entry key="app/src/main/res/layout/activity_all_trips.xml" value="0.10885416666666667" />
+        <entry key="app/src/main/res/layout/activity_all_trips_list_view.xml" value="0.10885416666666667" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.1203125" />
-        <entry key="app/src/main/res/layout/activity_intro_page.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_intro_page.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_intro_page2.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.121875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
