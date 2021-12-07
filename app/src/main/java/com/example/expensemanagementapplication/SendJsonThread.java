@@ -1,5 +1,7 @@
 package com.example.expensemanagementapplication;
 
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -15,12 +17,12 @@ public class SendJsonThread implements Runnable{
 
     private AppCompatActivity activity;
     private HttpURLConnection connection;
-    private String json;
+    private String jsonPayLoad;
 
-    public SendJsonThread(AppCompatActivity activity, HttpURLConnection connection, String json) {
+    public SendJsonThread(AppCompatActivity activity, HttpURLConnection connection, String jsonPayLoad) {
         this.activity = activity;
         this.connection = connection;
-        this.json = json;
+        this.jsonPayLoad = jsonPayLoad;
     }
 
     @Override
@@ -30,6 +32,8 @@ public class SendJsonThread implements Runnable{
             response = postJson();
         } else {
             response = "Error preparing the connection";
+            ((UploadDataToCloud)activity).jsonResponse.setText("Error - "+response);
+            Log.i("my msg",response);
         }
         showResult(response);
     }
@@ -49,7 +53,7 @@ public class SendJsonThread implements Runnable{
     private String postJson() {
         String response = "";
         try {
-            String postParameters = "jsonpayload=" + URLEncoder.encode(json, "UTF-8");
+            String postParameters = "jsonpayload=" + URLEncoder.encode(jsonPayLoad, "UTF-8");
             connection.setFixedLengthStreamingMode(postParameters.getBytes().length);
             PrintWriter out = new PrintWriter(connection.getOutputStream());
             out.print(postParameters);
@@ -57,11 +61,17 @@ public class SendJsonThread implements Runnable{
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 response = readStream(connection.getInputStream());
+                ((UploadDataToCloud)activity).jsonResponse.setText("Success - "+response);
+                Log.i("Success",response);
             } else {
+                ((UploadDataToCloud)activity).jsonResponse.setText("Error - "+response);
                 response = "Error contacting server: " + responseCode;
+                Log.i("Error",response);
             }
         } catch (Exception e) {
-            response = e.toString();//"Error executing code";
+            response = e.toString();
+            ((UploadDataToCloud)activity).jsonResponse.setText("Error - "+response);
+            Log.i("Error",response);//"Error executing code";
         }
         return response;
     }
@@ -75,11 +85,14 @@ public class SendJsonThread implements Runnable{
             }
         } catch (IOException e) {
             e.printStackTrace();
+
+            Log.i("my msg",e.toString());
         }
         return sb.toString();
     }
 
     private String generatePage(String content) {
+        ((UploadDataToCloud)activity).jsonResponse.setText("<html><body><p>" + content + "</p></body></html>");
         return "<html><body><p>" + content + "</p></body></html>";
     }
 
@@ -93,6 +106,7 @@ public class SendJsonThread implements Runnable{
 
         } catch (ProtocolException e) {
             e.printStackTrace();
+            Log.i("my msg",e.toString());
         }
         return false;
     }

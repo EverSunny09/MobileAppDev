@@ -11,14 +11,10 @@
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_all_trips_list.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_all_trips_list_view.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_home_screen.xml" value="0.264" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_intro_page2.xml" value="0.18931159420289856" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_log_in.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_new.xml" value="0.18931159420289856" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_sign_up.xml" value="0.1721014492753623" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_sign_up1.xml" value="0.25" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_signup.xml" value="0.18931159420289856" />
-        <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/activity_upload_data_to_cloud.xml" value="0.25" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/layout/row.xml" value="0.1" />
         <entry key="..\:/UOG/Mobile App Development/ExpenseManagementProject/app/src/main/res/menu/menu.xml" value="0.4" />
         <entry key="..\:/Users/Gurpreet/AndroidStudioProjects/MobileAppDev23/app/src/main/res/drawable/divider.xml" value="0.22552083333333334" />
@@ -55,6 +51,8 @@
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/all_trips_card_view.xml" value="0.25" />
         <entry key="..\:/Users/gg8061w/AndroidStudioProjects/MobileAppDev/app/src/main/res/layout/other_type_dailog_box.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/sg0269n/OneDrive - University of Greenwich/MobileAppDevProject/app/src/main/res/layout/activity_home_screen.xml" value="0.28940217391304346" />
+        <entry key="..\:/Users/sg0269n/StudioProjects/MobileAppDev/app/src/main/res/layout/activity_add_new_expense1.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/sg0269n/StudioProjects/MobileAppDev/app/src/main/res/layout/activity_upload_data_to_cloud.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>

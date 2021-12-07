@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -61,6 +62,7 @@ public class UploadDataToCloud extends AppCompatActivity {
         } catch (IOException e) {
             jsonResponse.setText(e.toString());
             e.printStackTrace();
+            Log.i("my msg","this is test");
         }
     }
 
