@@ -1,22 +1,23 @@
 package com.example.expensemanagementapplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailList {
 
-    private ArrayList<TripClass> trip;
+    private List<TripClass> trip;
 
     public DetailList() {
     }
-    public DetailList(ArrayList<TripClass> trip) {
+    public DetailList(List<TripClass> trip) {
         this.trip = trip;
     }
 
-    public ArrayList<TripClass> getTrip() {
+    public List<TripClass> getTrip() {
         return trip;
     }
 
-    public void setTrip(ArrayList<TripClass> trip) {
+    public void setTrip(List<TripClass> trip) {
         this.trip = trip;
     }
 }

@@ -1,12 +1,13 @@
 package com.example.expensemanagementapplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TripJSONModel {
     private String userId;
-    DetailList detailList;
+    private List<DetailList> detailList;
 
-    public TripJSONModel(String userId, DetailList detailList) {
+    public TripJSONModel(String userId, List<DetailList> detailList) {
         this.userId = userId;
         this.detailList = detailList;
     }
@@ -22,11 +23,11 @@ public class TripJSONModel {
         this.userId = userId;
     }
 
-    public DetailList getDetailList() {
+    public List<DetailList> getDetailList() {
         return detailList;
     }
 
-    public void setDetailList(DetailList detailList) {
+    public void setDetailList(List<DetailList> detailList) {
         this.detailList = detailList;
     }
 }

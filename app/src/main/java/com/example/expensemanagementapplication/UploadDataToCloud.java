@@ -33,7 +33,8 @@ import javax.net.ssl.X509TrustManager;
 
 public class UploadDataToCloud extends AppCompatActivity {
     public WebView browser;
-    private String url="https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cwstring";
+    private String url="https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cw";
+    //private String url="https://stuiis.cms.gre.ac.uk/COMP1424CoreWS/comp1424cwstring";
     private String Json;
     TextView jsonRequest,jsonResponse;
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -97,11 +98,13 @@ public class UploadDataToCloud extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.R)
     public String createTripJSONModel(){
         TripJSONModel tripJSONModel = new TripJSONModel();
-        tripJSONModel.setUserId(String.valueOf(getUserId()));
+        tripJSONModel.setUserId(getUserName());
+        List<DetailList> detailLists = new ArrayList<>();
         DetailList detailList = new DetailList();
         ArrayList<Integer> tripIds = getUserAllTrips(getUserId());
         detailList.setTrip(getAllTripData(tripIds));
-        tripJSONModel.setDetailList(detailList);
+        detailLists.add(detailList);
+        tripJSONModel.setDetailList(detailLists);
         return getJSON(tripJSONModel);
     }
 
@@ -114,6 +117,12 @@ public class UploadDataToCloud extends AppCompatActivity {
     private int getUserId(){
         SessionManagement sessionManagement=new SessionManagement(UploadDataToCloud.this);
         return sessionManagement.getSession();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private String getUserName(){
+        DataBaseExecution db = new DataBaseExecution(this);
+        return db.getEmployeeId(String.valueOf(getUserId()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -131,7 +140,7 @@ public class UploadDataToCloud extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private ArrayList<TripClass> getAllTripData(ArrayList<Integer> tripIds){
+    private List<TripClass> getAllTripData(ArrayList<Integer> tripIds){
         if(!tripIds.isEmpty()){
             DataBaseExecution db = new DataBaseExecution(this);
             Cursor tripResults = db.getAllTripsDetails(tripIds);
@@ -145,8 +154,8 @@ public class UploadDataToCloud extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public ArrayList<TripClass> getTripDetailsList(Cursor result, ArrayList<Expense> allExpenses) {
-        ArrayList<TripClass> allTripsList = new ArrayList<>();
+    public List<TripClass> getTripDetailsList(Cursor result, List<Expense> allExpenses) {
+        List<TripClass> allTripsList = new ArrayList<>();
 
         result.moveToFirst();
         while(!result.isAfterLast()){
@@ -159,12 +168,11 @@ public class UploadDataToCloud extends AppCompatActivity {
             trip.setRiskAssess(result.getString(9));
             trip.setType(result.getString(10));
             trip.setExpenseList(setTripExpense(result.getInt(0), allExpenses));
-
             allTripsList.add(trip);
 
             result.moveToNext();
         }
-        return allTripsList;
+        return allTripsList.stream().collect(Collectors.toList());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

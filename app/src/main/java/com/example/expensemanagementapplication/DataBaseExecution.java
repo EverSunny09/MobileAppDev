@@ -119,6 +119,13 @@ public class DataBaseExecution extends SQLiteOpenHelper {
             return true;*/
     }
 
+    public String getEmployeeId(String userId){
+        Cursor employeeId = ExpenseManagementDB.rawQuery("Select employee_id from User where user_id = ?",new String[]{userId});
+        employeeId.moveToFirst();
+        String test = employeeId.getString(0);
+        return employeeId.getString(0);
+    }
+
     public String getPwdFromDB (String userEmail){
         Cursor results = ExpenseManagementDB.rawQuery("Select password,user_id from User where LOWER(email) = ?",new String[]{userEmail});
         results.moveToFirst();
