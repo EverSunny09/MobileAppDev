@@ -11,6 +11,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -46,7 +47,14 @@ public class UploadDataToCloud extends AppCompatActivity {
         jsonRequest = findViewById(R.id.jsonRequest);
         jsonResponse = findViewById(R.id.jsonResponse);
         Json = createTripJSONModel();
-        setBrowserJob(Json);
+        if(Json==""){
+            finish();
+            raiseToast("No trips found!");
+
+        }
+        else{
+            setBrowserJob(Json);
+        }
     }
 
     private void setBrowserJob(String JSON){
@@ -102,10 +110,15 @@ public class UploadDataToCloud extends AppCompatActivity {
         List<DetailList> detailLists = new ArrayList<>();
         DetailList detailList = new DetailList();
         ArrayList<Integer> tripIds = getUserAllTrips(getUserId());
-        detailList.setTrip(getAllTripData(tripIds));
-        detailLists.add(detailList);
-        tripJSONModel.setDetailList(detailLists);
-        return getJSON(tripJSONModel);
+        if(tripIds.size() > 0){
+            detailList.setTrip(getAllTripData(tripIds));
+            detailLists.add(detailList);
+            tripJSONModel.setDetailList(detailLists);
+            return getJSON(tripJSONModel);
+        }
+        else{
+            return "";
+        }
     }
 
     public String getJSON(TripJSONModel tripJSONModel){
@@ -208,5 +221,9 @@ public class UploadDataToCloud extends AppCompatActivity {
         Date date = new Date(DateTime);
         Format format = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
         return format.format(date);
+    }
+    private void raiseToast(String toastMsg){
+        Toast alertText = Toast.makeText(getApplicationContext(), toastMsg, Toast.LENGTH_SHORT);
+        alertText.show();
     }
 }
