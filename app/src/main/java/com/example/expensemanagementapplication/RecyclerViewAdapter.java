@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             pieChart.setCenterText("Expenses Ratio");
             pieChart.setCenterTextSize(24);
             pieChart.getDescription().setEnabled(false);
-            pieChart.animateY(5000, Easing.EaseOutExpo);
+            pieChart.animateY(2000, Easing.EaseInElastic);
 
             Legend l = pieChart.getLegend();
             l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
