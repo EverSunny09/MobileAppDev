@@ -27,12 +27,20 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        SessionManagement sessionManagement=new SessionManagement(HomeScreen.this);
+        int userId = sessionManagement.getSession();
+
         DataBaseExecution db = new DataBaseExecution(this);
 
-        Intent i = getIntent();
-        String userName = i.getStringExtra(user);
+        Cursor userNameDb = db.getData("first_name","user","user_id",Integer.toString(userId));
+        userNameDb.moveToFirst();
+        String user = userNameDb.getString(0);
+
+        /*Intent i = getIntent();
+        String userName = i.getStringExtra(user);*/
         loggedInUser = findViewById(R.id.userNameText);
-        loggedInUser.setText("Hi, "+userName);
+        loggedInUser.setText("Hi, "+user);
         //db.getAllTripsDetails();
 
     }

@@ -7,7 +7,7 @@
     <string name="signUp">Sign Up</string>
     <string name="notAUser">Not A User ?</string>
 
-    <string-array name="tripTypes">
+    <string-array name="tripTypes" size="20dp">
         <item>Meeting</item>
         <item>Conference</item>
         <item>Seminar</item>
@@ -15,14 +15,14 @@
         <item>Others</item>
     </string-array>
 
-    <string-array name="expenseTypes">
+    <string-array name="expenseTypes" size="20dp">
         <item>Food</item>
         <item>Accommodation</item>
         <item>Travel</item>
         <item>Others</item>
     </string-array>
 
-    <string-array name="expenseCurrency">
+    <string-array name="expenseCurrency" size="20dp">
         <item>GBP</item>
         <item>INR</item>
         <item>EUR</item>

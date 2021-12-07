@@ -9,9 +9,11 @@
 
     <EditText
         android:id="@+id/destination"
-        android:layout_width="165dp"
-        android:layout_height="53dp"
+        android:layout_width="357dp"
+        android:layout_height="64dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Destination"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/isInternational"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,21 +22,26 @@
 
     <Switch
         android:id="@+id/isInternational"
-        android:layout_width="167dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="353dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="64dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Is International Trip"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/isRiskAssessmentRequired"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/isRiskAssessmentRequired"
-        android:layout_width="167dp"
-        android:layout_height="49dp"
+        android:layout_width="354dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="72dp"
         android:entries="@array/tripTypes"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Is Risk Assessment Required"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,7 +52,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:onClick="nextButtonClick"
-        app:backgroundTint="#C6D627"
+        app:backgroundTint="#FE6E2F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.653"
@@ -62,7 +69,7 @@
         android:clickable="true"
         android:onClick="previousButtonClick"
         android:rotationY="-180"
-        app:backgroundTint="#CDDC39"
+        app:backgroundTint="#FE6E2F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.343"
