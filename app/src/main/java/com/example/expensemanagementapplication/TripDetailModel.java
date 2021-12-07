@@ -33,12 +33,9 @@ public class TripDetailModel {
         return allExpenses;
     }
 
-    public void setAllExpenses(List<ExpenseDetailModel> allExpenses) {
-        this.allExpenses = allExpenses;
-    }
+    public void setAllExpenses(List<ExpenseDetailModel> allExpenses) { this.allExpenses = allExpenses; }
 
-    public TripDetailModel() {
-    }
+    public TripDetailModel() { }
 
     public int getId() {
         return id;
@@ -100,9 +97,7 @@ public class TripDetailModel {
         return totalCompesation;
     }
 
-    public void setTotalCompesation(int totalCompesation) {
-        this.totalCompesation = totalCompesation;
-    }
+    public void setTotalCompesation(int totalCompesation) { this.totalCompesation = totalCompesation; }
 
     public int getInt() {
         return isInt;
